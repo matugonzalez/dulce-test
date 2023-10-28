@@ -27,8 +27,8 @@ const BusinessRouter = () => {
                     </Route>
 
                     <Route path='stock'>
-                        <Route index element={<Stock />}/>
-                        <Route path='new' element={<NewStock />} />
+                        <Route index element={<div>where stock should go</div>}/>
+                        <Route path='new' element={<div>where new stock should go</div>} />
                     </Route>
 
                 </Route>
@@ -46,10 +46,6 @@ const BusinessRouter = () => {
                         <Route path=':id' element={<AdminOrder />} />
                     </Route>
 
-                    <Route path='stock'>
-                        <Route index element={<Stock />}/>
-                        <Route path='new' element={<NewStock />} />
-                    </Route>
                 </Route>
         
             </Route>

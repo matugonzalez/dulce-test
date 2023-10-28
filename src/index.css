@@ -47,6 +47,8 @@
   --secondary-color-l-low: hsl(0, 0%, 87.5%);
   --secondary-color-l-lower: hsl(0, 0%, 75%);
   --secondary-color-l-lowest: hsl(0, 0%, 62.5%);
+
+  --border-radius: 0.5em;
 }
 
 body {
@@ -57,6 +59,4 @@ body,
 #root {
   min-height: 100vh;
   width: 100%;
-  display: grid;
-  place-items: center;
 }
