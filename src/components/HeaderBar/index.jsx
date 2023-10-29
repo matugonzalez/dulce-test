@@ -21,13 +21,16 @@ const HeaderBar = () => {
                         <NavsLinks to = "/contact">CONTACT</NavsLinks>
                     </div>
                 
-            </nav>
+             </nav>
             <div>
                 {state.userSession.logged 
                     ? <div>Logged as {state.userSession.loginInfo.username}</div>
-                    : <Button onClickFunction={() => navigate('/login')}>Log In</Button>
+                    : 
+                    <div className='HeaderBar__BTSet'>
+                        <Button onClickFunction={() => navigate('/login')}>Log In</Button>
+                        <Button onClickFunction={() => navigate('/register')}>Register</Button>
+                    </div>
                 }
-                <UserLogo className='UserLogo' />
             </div>
         </header>
   )

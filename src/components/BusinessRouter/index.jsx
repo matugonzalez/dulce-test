@@ -45,6 +45,10 @@ const BusinessRouter = () => {
                         </Route>
 
                         <Route path='menu' element={<div>where menu should go</div>}/>
+                        <Route path='users'>
+                            <Route index element={<div>where list of users should go</div>}/>
+                            <Route path=':id' element={<div>where each user should go</div>}/>
+                        </Route>
                     </Route>
                 </Route>
         
@@ -52,7 +56,7 @@ const BusinessRouter = () => {
                 <Route index element={<Navigate to='/home'/>} />
                 <Route path='home' element={<Home />}/>
                 <Route path='about-us' element={<div>where about-us should go</div>}/>
-                <Route path='contact' element={<div>where contact should go</div>}/>
+
                 <Route element={<ProtectedRoute />}>
                     <Route path='orders'>
                             <Route index element={<ClientOrders />}/>
@@ -65,8 +69,8 @@ const BusinessRouter = () => {
                 <Route path='*' element={<h1>404</h1>} />
             </Route>
   
-            <Route path='login' element={state.userSession.logged ? <Navigate to='/admin'/> : <LogIn />} />
-            <Route path='register' element= {<Register />} />
+            <Route path='login' element={state.userSession.logged ? <Navigate to='/home'/> : <LogIn />} />
+            <Route path='register' element= {state.userSession.logged ?<Register to='/home'/> : <div>where register should go</div>} />
         </Routes>
         
         </>
