@@ -6,7 +6,7 @@ const PreviousPageBT = ({ className }) => {
     const navigate = useNavigate()
 
     return (
-        <Button className={className} onClick={() => navigate(-1)}>Go back</Button>
+        <Button className={className} onClickFunction={() => navigate(-1)}>Go back</Button>
     )
 }
 

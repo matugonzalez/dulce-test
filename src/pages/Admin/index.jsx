@@ -10,8 +10,8 @@ const Admin = () => {
     return (
         <div className='Admin'>
             <h1>ADMIN</h1>
-            <Button onClick={navigate('/admin/dashboard')}>DASHBOARD</Button>         
-            
+            <Button onClickFunction={() => navigate('/admin/dashboard')}>DASHBOARD</Button>         
+            <Button onClickFunction={() => navigate('/home')}>HOME</Button>         
         </div>
     )
 }

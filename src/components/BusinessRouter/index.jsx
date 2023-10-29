@@ -60,7 +60,7 @@ const BusinessRouter = () => {
                 <Route path='*' element={<h1>404</h1>} />
             </Route>
   
-            <Route path='login' element={state.userSession.logged ? <Navigate to='/home'/> : <LogIn />} />
+            <Route path='login' element={state.userSession.logged ? <Navigate to='/admin'/> : <LogIn />} />
             <Route path='register' element= {<Register />} />
         </Routes>
     )

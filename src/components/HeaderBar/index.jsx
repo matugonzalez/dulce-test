@@ -12,14 +12,17 @@ const HeaderBar = () => {
         <header>
             <Logo className='HeaderBar__Logo' />
             <nav>
-                <Button onClick={navigate('/home')}>HOME</Button>
-                <Button onClick={navigate('/menu')}>MENU</Button>
-                <Button onClick={navigate('/orders')}>ORDERS</Button>
-                <Button onClick={navigate('/about-us')}>ABOUT US</Button>
-                <Button onClick={navigate('/contact')}>CONTACT</Button>
+                <Button onClickFunction={() => navigate('/home')}>HOME</Button>
+                <Button onClickFunction={() => navigate('/menu')}>MENU</Button>
+                <Button onClickFunction={() => navigate('/orders')}>ORDERS</Button>
+                <Button onClickFunction={() => navigate('/about-us')}>ABOUT US</Button>
+                <Button onClickFunction={() => navigate('/contact')}>CONTACT</Button>
             </nav>
             <div>
-                {state.userSession.logged ? <div>Logged as {state.userSession.loginInfo.username}</div> : <Button onClick={navigate('/login')}>Log In</Button>}
+                {state.userSession.logged 
+                    ? <div>Logged as {state.userSession.loginInfo.username}</div>
+                    : <Button onClickFunction={() => navigate('/login')}>Log In</Button>
+                }
                 <UserLogo className='UserLogo' />
             </div>
         </header>
