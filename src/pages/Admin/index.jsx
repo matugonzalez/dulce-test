@@ -1,19 +1,19 @@
-// import './Admin.css';
+import './Admin.css';
 
-// import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import Button from '../../components/Button';
+import PreviousPageBT from '../../components/PreviousPageBT';
 
+const Admin = () => {
 
-// const Admin = ({ children }) => {
-//     const location = useLocation();
+    const navigate = useNavigate()
+    return (
+        <div className='Admin'>
+            <h1>ADMIN</h1>
+            <Button onClick={navigate('/admin/dashboard')}>DASHBOARD</Button>         
+            
+        </div>
+    )
+}
 
-//     return (
-//         <div className='Admin'>
-//             {(location.pathname !== '/admin' && location.pathname !== '/admin/login') 
-//                 && <PreviousPageBT className='Admin__previous-page-bt'/>}
-//             <SidePanel />
-//             {children}
-//         </div>
-//     )
-// }
-
-// export default Admin
+export default Admin

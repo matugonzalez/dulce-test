@@ -1,15 +1,10 @@
 import './Button.css';
 
-import { forwardRef } from 'react';
-
-const Button = forwardRef(({
-  className = '',
-  children,
-  ...buttonProps
-}, ref) => (
-    <button ref={ref} {...buttonProps} className={`Button ${className ?? ''}`}>
-      {children}
-    </button>
-));
+const Button = ({children, onClickFunction, className}) => {
+    const customClass = className === undefined  ? '' : className;
+    return (
+        <button className={`Button ${customClass}`} onClick={onClickFunction}>{children}</button>
+    )
+}
 
 export default Button;

@@ -1,10 +1,12 @@
-import React from 'react'
 import './Home.css'
+import HeaderBar from '../../../components/HeaderBar'
 
 const Home = () => {
-  return (
-    <div>Home</div>
-  )
+    return (
+        <div className='Home'>
+            <HeaderBar />
+        </div>
+    )
 }
 
 export default Home
