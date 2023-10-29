@@ -3,7 +3,7 @@ import './Orders.css'
 
 const ClientOrders = () => {
   return (
-    <div>ClientOrders</div>
+    <h2>Muestra los pedidos de nuestros clientes</h2>
   )
 }
 
