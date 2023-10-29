@@ -1,21 +1,26 @@
-.Button {
+a{
     font-family: var(--primary-font);
     font-size: 1em;
     font-weight: 600;
     padding: .25em .75em;
 
-    color: var( --secondary-color-l-base);
-    
     background-color: var(--brand-color-high);
-
     border: 0;
     outline: 0;
-
     cursor: pointer;
-
     transition: background-color .15s;
-}
 
-.Button:hover {
+}
+a{
+    text-decoration: none;
+    color: var( --secondary-color-l-base);
+}
+a:hover{
     color: var(--brand-color-l-higher);
+}
+a.isActive{
+    font-weight: bold;
+    pointer-events: none;
+    color: var(--brand-color-l-higher)
+
 }

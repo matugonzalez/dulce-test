@@ -16,6 +16,7 @@ const Home = () => {
                 <span>Delivery is agreed by wpp </span>
                 <span>Delivery is agreed by email </span>
             </div>
+
         </div>
     )
 }

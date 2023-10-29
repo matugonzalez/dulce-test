@@ -1,22 +1,27 @@
 import './HeaderBar.css'
 import { useAdminSystem } from '../../providers/AdminSystem'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 import Logo from '../Logo'
 import Button from '../Button'
 import UserLogo from '../Icons/UserLogo'
+import NavsLinks from '../NavLinks'
 
 const HeaderBar = () => {
     const [state] = useAdminSystem()
     const navigate = useNavigate()
     return (
-        <header className='HeaderBar'>
-            <Logo className='HeaderBar__BrandLogo' />
-            <div className='HeaderBar__BTSet'>
-                <Button onClickFunction={() => navigate('/home')}>HOME</Button>
-                <Button onClickFunction={() => navigate('/menu')}>MENU</Button>
-                <Button onClickFunction={() => navigate('/orders')}>ORDERS</Button>
-                <Button onClickFunction={() => navigate('/contact')}>CONTACT</Button>
-            </div>
+        <header>
+            <nav className='navbar'>
+                <Logo className='HeaderBar__Logo' />
+                    <div className="navsLink">
+                        <NavsLinks to = "/home">HOME</NavsLinks>
+                        <NavsLinks to = "/menu">MENU</NavsLinks>
+                        <NavsLinks to = "/orders">ORDERS</NavsLinks>
+                        <NavsLinks to = "/about-us">ABOUT US</NavsLinks>
+                        <NavsLinks to = "/contact">CONTACT</NavsLinks>
+                    </div>
+                
+             </nav>
             <div>
                 {state.userSession.logged 
                     ? <div>Logged as {state.userSession.loginInfo.username}</div>

@@ -1,6 +1,9 @@
 import { Routes, Route, Navigate, Outlet, useNavigate } from 'react-router-dom'
 import { useAdminSystem } from '../../providers/AdminSystem'
 import ProtectedRoute from './ProtectedRoute'
+import HeaderBar from '../HeaderBar'
+//css
+import "./index.css"
 
 // ADMIN PAGES
 import AdminOrders from '../../pages/Admin/AdminOrders'
@@ -19,6 +22,8 @@ const BusinessRouter = () => {
     const [state] = useAdminSystem()
     const navigate = useNavigate()
     return (
+        <>
+        <HeaderBar/>
         <Routes>
             {/* ADMIN RELATED ROUTES */}
                 {/* LOGIN PROTECTED ROUTES */}
@@ -67,6 +72,9 @@ const BusinessRouter = () => {
             <Route path='login' element={state.userSession.logged ? <Navigate to='/home'/> : <LogIn />} />
             <Route path='register' element= {state.userSession.logged ?<Register to='/home'/> : <div>where register should go</div>} />
         </Routes>
+        
+        </>
+        
     )
 }
 

@@ -1,10 +1,10 @@
-.HeaderBar {
+.navbar{
     display: flex;
-    align-items: center;
+    flex-direction: row;
     justify-content: space-between;
-    outline: 2px solid;
-    height: 10%;
-    background-color: var(--brand-color-l-higher);
+    align-items: center;
+    background-color: var(--brand-color-l-high);
+    padding: 10px 10%;
 }
 .HeaderBar__BrandLogo {
 }
