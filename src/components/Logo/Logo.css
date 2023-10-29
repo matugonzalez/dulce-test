@@ -15,7 +15,7 @@
     -ms-hyphens: auto;
 
     font-family: var(--brand-font-family);
-    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-size: clamp(1.5rem, 4vw, 2rem);
     font-weight: 700;
     line-height: 1;
 

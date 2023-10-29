@@ -1,0 +1,19 @@
+.HeaderBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    outline: 2px solid;
+    height: 10%;
+    background-color: var(--brand-color-l-higher);
+}
+.HeaderBar__BrandLogo {
+}
+.HeaderBar__UserLogo {
+    border-radius: 50%;
+    outline: 1px solid black;
+    aspect-ratio: 1;
+    height: 1.4ch;
+}
+.HeaderBar__BTSet {
+    outline: 1px solid;
+}

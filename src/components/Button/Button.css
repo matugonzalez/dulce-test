@@ -20,8 +20,3 @@
 .Button:hover {
     background-color: var(--primary-color-l-highest);
 }
-
-.Button:focus {
-    outline: 1px solid var(--secondary-color-l-base);
-    outline-offset: 2px;
-}
