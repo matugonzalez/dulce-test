@@ -7,14 +7,15 @@ import HeaderBar from '../HeaderBar'
 import AdminOrders from '../../pages/Admin/AdminOrders'
 import AdminOrder from '../../pages/Admin/AdminOrder'
 import Dashboard from '../../pages/Admin/Dashboard'
-import Admin from '../../pages/Admin'
 
 // CLIENT PAGES
 import Home from '../../pages/Client/Home'
 import ClientOrders from '../../pages/Client/ClientOrders'
 import ClientOrder from '../../pages/Client/ClientOrder'
-import LogIn from '../../pages/LogIn'
-import Register from '../../pages/Register'
+
+// LOGIN REGISTER PAGES
+import Register from '../../pages/RegisterPage'
+import LoginPage from '../../pages/LoginPage'
 
 const BusinessRouter = () => {
     const [state] = useAdminSystem()
@@ -63,8 +64,8 @@ const BusinessRouter = () => {
                 <Route path='*' element={<h1>404</h1>} />
             </Route>
   
-            <Route path='login' element={state.userSession.logged ? <Navigate to='/home'/> : <LogIn />} />
-            <Route path='register' element= {state.userSession.logged ?<Register to='/home'/> : <div>where register should go</div>} />
+            <Route path='login' element={state.userSession.logged ? <Navigate to='/home'/> : <LoginPage />} />
+            <Route path='register' element= {state.userSession.logged ?<Register to='/home'/> : <Register />} />
         </Routes>
         
     )

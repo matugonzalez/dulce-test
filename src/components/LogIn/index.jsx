@@ -1,11 +1,11 @@
 import './LogIn.css'
 import { useAdminSystem } from '../../providers/AdminSystem'
 import { useState, useRef, createRef } from 'react'
-import ClosedEye from '../../components/Icons/ClosedEye'
-import OpenedEye from '../../components/Icons/OpenedEye'
-import Button from '../../components/Button'
+import ClosedEye from '../Icons/ClosedEye'
+import OpenedEye from '../Icons/OpenedEye'
+import Button from '../Button'
 
-const LogIn = () => {
+const LogIn = ({className}) => {
     const [_, actions] = useAdminSystem()
     const [passwordInputType, setPasswordInputType] = useState('password')
     const formTipSpanRef = useRef(null)
@@ -41,8 +41,10 @@ const LogIn = () => {
             })
     }
 
+    const inputClassName = className === undefined ? '' : className
+
     return (
-       <form className='Login' onSubmit={handleSubmit}>
+       <form className={`Login ${inputClassName}`} onSubmit={handleSubmit}>
             <label className='Login__label' htmlFor='username'>
                 <strong className='Login-label__text'>Username</strong>
                 <div className='Login-label__input'>
@@ -55,7 +57,7 @@ const LogIn = () => {
                     />
                 </div>
             </label>
-            <label className='Login__label' htmlFor='password'>
+            <label className='Login__label ' htmlFor='password'>
                 <strong className='Login-label__text'>Password</strong>
                 <div className='Login-label__input'>
                     <input 
