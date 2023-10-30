@@ -1,19 +1,10 @@
-.navbar{
+.HeaderBar{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     background-color: var(--brand-color-l-high);
     padding: 10px 10%;
-}
-.HeaderBar__BrandLogo {
-}
-.HeaderBar__UserLogo {
-    border-radius: 50%;
-    outline: 1px solid black;
-    aspect-ratio: 1;
-    height: 1.4ch;
-}
-.HeaderBar__BTSet {
-    outline: 1px solid;
+    height: 6em;
+
 }
