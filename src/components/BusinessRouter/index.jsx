@@ -6,6 +6,7 @@ import ProtectedRoute from './ProtectedRoute'
 import AdminOrders from '../../pages/Admin/AdminOrders'
 import AdminOrder from '../../pages/Admin/AdminOrder'
 import Dashboard from '../../pages/Admin/Dashboard'
+import Stock from '../../pages/Admin/Stock'
 
 // CLIENT PAGES
 import Home from '../../pages/Client/Home'
@@ -36,8 +37,8 @@ const BusinessRouter = () => {
                         </Route>
 
                         <Route path='stock'>
-                            <Route index element={<div>where stock should go</div>}/>
-                            <Route path='new' element={<div>where new stock should go</div>} />
+                            <Route index element={<Stock/>}/>
+                            <Route path='new' element={<Stock/>} />
                         </Route>
 
                         <Route path='menu' element={<Menu />}/>

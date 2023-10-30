@@ -1,9 +1,14 @@
 import React from 'react'
 import './Orders.css'
+import Dashboard from '../Dashboard'
+
 
 const Orders = () => {
   return (
-    <div>Orders</div>
+    <>
+    <Dashboard/>
+    <h1>Orders Admin</h1>
+    </>
   )
 }
 
