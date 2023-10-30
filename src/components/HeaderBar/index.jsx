@@ -6,7 +6,7 @@ import Button from '../Button'
 
 const HeaderBar = () => {
     const [state, actions] = useAdminSystem()
-    console.log(state.userSession.logged)
+    //console.log(state.userSession.logged)
     return (
         <header className='HeaderBar'>
             <Logo className='HeaderBar__Logo' />
@@ -19,10 +19,23 @@ const HeaderBar = () => {
                 
             <div>
                 {state.userSession.logged 
-                    ? <div>Logged as {state.userSession.loginInfo.username}</div>
-                    : <Button onClickFunction={() => navigate('/login')}>Log In</Button>
+                    ? 
+                    <div className='navsLink'>
+                        Logged as {state.userSession.loginInfo.username}
+                        <Button onClickFunction={() => {
+                            actions.userSession.logOut()
+                        }}
+                        >
+                            LOG OUT
+                        </Button>
+                        {state.userSession.loginInfo.role === 'admin' && <NavsLinks to='/admin/dashboard'>DASHBOARD</NavsLinks>}
+                    </div>
+                    : 
+                    <div className='navsLink'>
+                        <NavsLinks to = "/login">LOG IN</NavsLinks>
+                        <NavsLinks to = "/register">REGISTER</NavsLinks>
+                    </div>
                 }
-                <UserLogo className='UserLogo' />
             </div>
         </header>
 
