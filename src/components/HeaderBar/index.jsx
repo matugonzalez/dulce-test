@@ -24,7 +24,6 @@ const HeaderBar = () => {
                 }
                 <UserLogo className='UserLogo' />
             </div>
-            </nav>
         </header>
 
   )
