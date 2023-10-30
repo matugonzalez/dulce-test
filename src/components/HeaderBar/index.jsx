@@ -1,6 +1,6 @@
 import './HeaderBar.css'
 import { useAdminSystem } from '../../providers/AdminSystem'
-import { useNavigate, NavLink } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import Logo from '../Logo'
 import Button from '../Button'
 import UserLogo from '../Icons/UserLogo'
@@ -9,6 +9,8 @@ import NavsLinks from '../NavLinks'
 const HeaderBar = () => {
     const [state] = useAdminSystem()
     const navigate = useNavigate()
+    
+    
     return (
         <header>
             <nav className='navbar'>
@@ -19,16 +21,22 @@ const HeaderBar = () => {
                         <NavsLinks to = "/orders">ORDERS</NavsLinks>
                         <NavsLinks to = "/about-us">ABOUT US</NavsLinks>
                         <NavsLinks to = "/contact">CONTACT</NavsLinks>
+                        {state.userSession.logged ?  <NavsLinks to = "/admin">ADMIN</NavsLinks>
+                            : ''
+                        }
+                        
                     </div>
                 
-            </nav>
             <div>
                 {state.userSession.logged 
-                    ? <div>Logged as {state.userSession.loginInfo.username}</div>
+                    ? <div className='login_style'>
+                        <h4>Logged as {state.userSession.loginInfo.username}</h4>
+                        <UserLogo className='UserLogo' />
+                      </div>
                     : <Button onClickFunction={() => navigate('/login')}>Log In</Button>
                 }
-                <UserLogo className='UserLogo' />
             </div>
+            </nav>
         </header>
   )
 }

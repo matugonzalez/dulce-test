@@ -6,3 +6,6 @@
     background-color: var(--brand-color-l-high);
     padding: 10px 10%;
 }
+.login_style{
+    font-family: var(--primary-font);
+}

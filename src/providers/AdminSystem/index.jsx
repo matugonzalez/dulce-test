@@ -24,7 +24,7 @@ const AdminSystemContextProvider = ({children}) => {
                     }
                 }, 2000)
 
-                // get /api/admin/login { username, password 
+                // get /api/admin/login { username, password }
             })
         },
         logOut: () => {setUserSessionState((prev) => ({...prev, logged: false}))}
