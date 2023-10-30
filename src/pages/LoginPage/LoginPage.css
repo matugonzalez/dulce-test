@@ -1,0 +1,7 @@
+.LoginPage {
+    display: grid;
+    min-height: 100vh;
+}
+.LoginPage_Login {
+    justify-self: center;
+}

@@ -1,0 +1,5 @@
+.Home {
+    background-color: var(--secondary-color-l-low);
+    display:grid;
+    min-height: 100vh;
+}

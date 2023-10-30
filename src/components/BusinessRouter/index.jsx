@@ -2,37 +2,32 @@ import { Routes, Route, Navigate, Outlet, useNavigate } from 'react-router-dom'
 import { useAdminSystem } from '../../providers/AdminSystem'
 import ProtectedRoute from './ProtectedRoute'
 import HeaderBar from '../HeaderBar'
-//css
-import "./index.css"
 
 // ADMIN PAGES
 import AdminOrders from '../../pages/Admin/AdminOrders'
 import AdminOrder from '../../pages/Admin/AdminOrder'
 import Dashboard from '../../pages/Admin/Dashboard'
-import Admin from '../../pages/Admin'
 
 // CLIENT PAGES
 import Home from '../../pages/Client/Home'
 import ClientOrders from '../../pages/Client/ClientOrders'
 import ClientOrder from '../../pages/Client/ClientOrder'
-import LogIn from '../../pages/LogIn'
-import Register from '../../pages/Register'
+
+// LOGIN REGISTER PAGES
+import Register from '../../pages/RegisterPage'
+import LoginPage from '../../pages/LoginPage'
 
 const BusinessRouter = () => {
     const [state] = useAdminSystem()
     const navigate = useNavigate()
     return (
-        <>
-        <HeaderBar/>
         <Routes>
             {/* ADMIN RELATED ROUTES */}
                 {/* LOGIN PROTECTED ROUTES */}
                 <Route element={<ProtectedRoute />}>
                     <Route path='/admin'>
-                    
-                        <Route index element={<Admin />} />
 
-                        <Route path='dashboard' element={<Dashboard  />}/>
+                        <Route index path='dashboard' element={<Dashboard  />}/>
 
                         <Route path='orders'>
                             <Route index element={<AdminOrders />}/>
@@ -45,6 +40,10 @@ const BusinessRouter = () => {
                         </Route>
 
                         <Route path='menu' element={<div>where menu should go</div>}/>
+                        <Route path='users'>
+                            <Route index element={<div>where list of users should go</div>}/>
+                            <Route path=':id' element={<div>where each user should go</div>}/>
+                        </Route>
                     </Route>
                 </Route>
         
@@ -52,7 +51,7 @@ const BusinessRouter = () => {
                 <Route index element={<Navigate to='/home'/>} />
                 <Route path='home' element={<Home />}/>
                 <Route path='about-us' element={<div>where about-us should go</div>}/>
-                <Route path='contact' element={<div>where contact should go</div>}/>
+
                 <Route element={<ProtectedRoute />}>
                     <Route path='orders'>
                             <Route index element={<ClientOrders />}/>
@@ -65,11 +64,9 @@ const BusinessRouter = () => {
                 <Route path='*' element={<h1>404</h1>} />
             </Route>
   
-            <Route path='login' element={state.userSession.logged ? <Navigate to='/admin'/> : <LogIn />} />
-            <Route path='register' element= {<Register />} />
+            <Route path='login' element={state.userSession.logged ? <Navigate to='/home'/> : <LoginPage />} />
+            <Route path='register' element= {state.userSession.logged ?<Register to='/home'/> : <Register />} />
         </Routes>
-        
-        </>
         
     )
 }

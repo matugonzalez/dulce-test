@@ -19,7 +19,3 @@
 .Button:hover {
     color: var(--brand-color-l-higher);
 }
-
-.Button:focus {
-    outline-offset: 2px;
-}
