@@ -1,15 +1,14 @@
 import './LogIn.css'
 import { useAdminSystem } from '../../providers/AdminSystem'
-import { useState, useRef, createRef } from 'react'
+import { useState, useRef } from 'react'
 import ClosedEye from '../Icons/ClosedEye'
 import OpenedEye from '../Icons/OpenedEye'
-import Button from '../Button'
 
 const LogIn = ({className}) => {
     const [_, actions] = useAdminSystem()
     const [passwordInputType, setPasswordInputType] = useState('password')
     const formTipSpanRef = useRef(null)
-    const submitButtonRef = createRef()
+    const submitButtonRef = useRef(null)
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -77,7 +76,7 @@ const LogIn = ({className}) => {
                 </div>
             </label>
             <span className='Login__state' ref={formTipSpanRef}></span>
-            <Button className='Login__submit-bt' type='submit' ref={submitButtonRef}>ENTER</Button>
+            <button className='Login__submit-bt' type='submit' ref={submitButtonRef}>ENTER</button>
         </form>
     )
     }
