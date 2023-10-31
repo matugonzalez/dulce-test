@@ -7,6 +7,9 @@ const Home = () => {
     return (
         <div className='Home'>
             <HeaderBar />
+            <div className="Home_welcome">
+                <h1>Welcome to DolceMika</h1>
+            </div>
             <div className="Home_Frecuent">
                 <h1>Frecuently ordered menues</h1>
                 <Carousel items={itemsArray}/>
