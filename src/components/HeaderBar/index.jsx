@@ -6,7 +6,7 @@ import Button from '../Button'
 
 const HeaderBar = () => {
     const [state, actions] = useAdminSystem()
-    console.log(state.userSession.logged)
+    //console.log(state.userSession.logged)
     return (
         <header className='HeaderBar'>
             <Logo className='HeaderBar__Logo' />

@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate, Outlet, useNavigate } from 'react-router-dom'
 import { useAdminSystem } from '../../providers/AdminSystem'
 import ProtectedRoute from './ProtectedRoute'
-import HeaderBar from '../HeaderBar'
 
 // ADMIN PAGES
 import AdminOrders from '../../pages/Admin/AdminOrders'
@@ -10,6 +9,8 @@ import Dashboard from '../../pages/Admin/Dashboard'
 
 // CLIENT PAGES
 import Home from '../../pages/Client/Home'
+import Menu from '../../pages/Client/Menu'
+import AboutUs from '../../pages/Client/AboutUs'
 import ClientOrders from '../../pages/Client/ClientOrders'
 import ClientOrder from '../../pages/Client/ClientOrder'
 
@@ -39,7 +40,7 @@ const BusinessRouter = () => {
                             <Route path='new' element={<div>where new stock should go</div>} />
                         </Route>
 
-                        <Route path='menu' element={<div>where menu should go</div>}/>
+                        <Route path='menu' element={<Menu />}/>
                         <Route path='users'>
                             <Route index element={<div>where list of users should go</div>}/>
                             <Route path=':id' element={<div>where each user should go</div>}/>
@@ -50,7 +51,7 @@ const BusinessRouter = () => {
             <Route path='/'>
                 <Route index element={<Navigate to='/home'/>} />
                 <Route path='home' element={<Home />}/>
-                <Route path='about-us' element={<div>where about-us should go</div>}/>
+                <Route path='about-us' element={<AboutUs />}/>
 
                 <Route element={<ProtectedRoute />}>
                     <Route path='orders'>
@@ -58,7 +59,7 @@ const BusinessRouter = () => {
                             <Route path=':id' element={<ClientOrder />} />
                     </Route>
                 
-                    <Route path='menu' element={<div>where menu should go</div>}/>
+                    <Route path='menu' element={<Menu />}/>
 
                 </Route>
                 <Route path='*' element={<h1>404</h1>} />

@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 import { BUSINESS_INFO, ADMIN_LOGIN_INFO } from './consts';
-import axios from 'axios';
+//import axios from 'axios';
 
 const Context = createContext([
     { userSession: { logged: false }, businessInfo: BUSINESS_INFO},
