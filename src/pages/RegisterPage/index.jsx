@@ -5,8 +5,8 @@ import Register from '../../components/Register'
 const RegisterPage = () => {
     return (
         <div className='RegisterPage'>
-            <HeaderBar />
-            <Register />
+            <HeaderBar className='RegisterPage_HeaderBar'/>
+            <Register className='RegisterPage_Register'/>
         </div>
     )
 }
