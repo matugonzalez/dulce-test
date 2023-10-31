@@ -12,18 +12,18 @@ const Carousel = ({items}) => {
     const prevItem = () => {
         setCurrentItem((currentItem - 1 + items.length) % items.length);
     }
-    console.log(items.currentItem)
+    
     return (
         <div className='Carousel'>
-            <Button className='Carousel_button Carousel_button-prev' onClickFunction={prevItem}>Prev</Button>
             <div className='Carousel_container'>
+                <Button className='Carousel_button Carousel_button-prev' onClickFunction={prevItem}>Prev</Button>
                 <img
                     className='Carousel_img' 
                     src={items[currentItem].imageUrl}
                     alt={items[currentItem].altText}
                 />
+                <Button className='Carousel_button Carousel_button-next' onClickFunction={nextItem}>Next</Button>
             </div>
-            <Button className='Carousel_button Carousel_button-next' onClickFunction={nextItem}>Next</Button>
         </div>
     )
 }

@@ -1,0 +1,4 @@
+.body{
+    background-color: var(--brand-color-l-lowest);
+    overflow-y: none;
+}

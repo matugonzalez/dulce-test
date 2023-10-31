@@ -1,10 +1,12 @@
 import Dashboard from "../Dashboard"
-
+import './Stock.css'
 function Stock(){
     return(
         <>
         <Dashboard />
-        <h1>Stock</h1>
+        <div className="body">
+            <h1>Stock</h1>
+        </div>
         </>
     )
 }
