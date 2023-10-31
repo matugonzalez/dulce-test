@@ -15,6 +15,7 @@ const Dashboard = () => {
             <div className='Dashboard_container'>
                 <Button className='Home_linkButton' onClickFunction={() => navigate('/admin/stock')}><span>STOCK</span></Button>
                 <Button className='Home_linkButton' onClickFunction={() => navigate('/admin/orders')}><span>ORDERS</span></Button>
+                <Button className='Home_linkButton' onClickFunction={() => navigate('/admin/clientes')}><span>CLIENTES</span></Button>
                 <Button className='Home_linkButton' onClickFunction={() => navigate('/admin/menu')}><span>MENU</span></Button>
                 <PreviousPageBT />
             </div>

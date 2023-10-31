@@ -6,6 +6,8 @@ import HeaderBar from '../HeaderBar'
 // ADMIN PAGES
 import AdminOrders from '../../pages/Admin/AdminOrders'
 import AdminOrder from '../../pages/Admin/AdminOrder'
+import Inventory from '../../pages/Admin/AdminStock'
+import Clientes from '../../pages/Admin/AdminClientes'
 import Dashboard from '../../pages/Admin/Dashboard'
 
 // CLIENT PAGES
@@ -35,7 +37,7 @@ const BusinessRouter = () => {
                         </Route>
 
                         <Route path='stock'>
-                            <Route index element={<div>where stock should go</div>}/>
+                            <Route index element={<Inventory />}/>
                             <Route path='new' element={<div>where new stock should go</div>} />
                         </Route>
 
@@ -43,6 +45,10 @@ const BusinessRouter = () => {
                         <Route path='users'>
                             <Route index element={<div>where list of users should go</div>}/>
                             <Route path=':id' element={<div>where each user should go</div>}/>
+                        </Route>
+
+                        <Route path='clientes'>
+                            <Route index element={<Clientes />}/>
                         </Route>
                     </Route>
                 </Route>

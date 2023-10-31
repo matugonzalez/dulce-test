@@ -1,0 +1,16 @@
+{
+    "products": [
+        {
+            "id": "1",
+            "titulo":"harina",
+            "detalle":"de trigo",
+            "stock":4
+        }, 
+        {
+            "id": "2",
+            "titulo":"levadura",
+            "detalle":"instantanea",
+            "stock":6
+        }
+    ]
+}

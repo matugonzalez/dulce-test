@@ -1,0 +1,14 @@
+{
+    "pedidos": [
+        {
+            "id": "1",
+            "cliente": "Juan",
+            "estado": "Revisando"
+        }, 
+        {
+            "id": "2",
+            "cliente": "Pedro",
+            "estado": "Iniciado"
+        }
+    ]
+}
