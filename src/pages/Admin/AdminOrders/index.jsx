@@ -2,15 +2,23 @@ import React from 'react'
 import './Orders.css'
 import { useState,useEffect } from 'react'
 import data from './test.json'
+import axios from 'axios'
 
 const Orders = () => {
   const [pedidos, setPedidos] = useState([]);
+  
   const [searchQuery, setSearchQuery] = useState('');
-
+  /*
   useEffect(() => {
     if (data && data.pedidos) {
         setPedidos(data.pedidos);
     }
+  }, []);
+  */
+  useEffect(() => {
+    axios.get('/api/orders')
+      .then((response) => setPedidos(response.data.pedidos))
+      .catch((error) => console.error('Error', error));
   }, []);
   //search input
   const handleOnChange = (event) => {
@@ -59,8 +67,8 @@ const Orders = () => {
                     <span>
                         <button>➕</button>
                     </span>
-                    <span>{pedido.cliente}</span>
-                    <span>{pedido.estado}</span>
+                    <span>{pedido.cliente.fullname}</span>
+                    <span>{pedido.state}</span>
                 </div>
             ))}
         </div>
