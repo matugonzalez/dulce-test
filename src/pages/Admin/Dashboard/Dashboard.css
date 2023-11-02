@@ -1,0 +1,9 @@
+.Dashboard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--brand-color-l-high);
+    padding: 10px 10%;
+    height: 6em;
+}

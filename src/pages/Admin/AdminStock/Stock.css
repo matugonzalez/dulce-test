@@ -16,6 +16,7 @@
     margin-bottom: auto;
     font-size: 3em;
     text-align: center;
+    color: black;
 }
 
 .Inventory > .Inventory__content {
@@ -76,10 +77,15 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: black;
 }
 
 .Inventory > .Inventory__content > .Inventory__list > .Inventory-list__item > span:first-of-type {
     flex: 0 0 4ch;
+}
+
+.Inventory > .Inventory__content > .Inventory__list > .Inventory-list__item {
+    border-bottom: 1px solid black; 
 }
 
 .modal-overlay {
@@ -96,9 +102,9 @@
 }
 
 .modal-content {
-    background-color: white;
+    background-color: palevioletred; 
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 25px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -109,4 +115,32 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
+    color: white; 
 }
+
+.modal-content input {
+    background-color: white; 
+    color: black; 
+    font-size: 1.1em; 
+    border-radius: 10px;
+}
+
+.modal-content button {
+    margin: 5px; 
+    padding: 5px 15px; 
+    font-size: 0.9em;
+    border-radius: 15px;
+    cursor: pointer;
+}
+/*¿working??????*/
+.Inventory_Add,/*¿?*/
+.Inventory-list__item button {
+    padding: 1px 1px;/*Tamaño boton*/
+    font-size: 0.9em;/* amaño letra boton*/
+}
+.Inventory_Add {
+    background-color: palevioletred;/*Fondo botón Añadir*/
+    color: black;/*Letras botón Añadir*/
+    border-radius: 15px;
+}
+

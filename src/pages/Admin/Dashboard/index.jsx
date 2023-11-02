@@ -1,14 +1,14 @@
 import './Dashboard.css'
 import { useAdminSystem } from '../../../providers/AdminSystem'
-import { useNavigate } from 'react-router-dom'
-import Button from '../../../components/Button'
 import PreviousPageBT from '../../../components/PreviousPageBT'
-
+import NavsLinks from '../../../components/NavLinks'
+import Button from '../../../components/Button'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
     const [state] = useAdminSystem()
     const navigate = useNavigate()
-    
+
     return (
         <div className='Dashboard'>
             <h1>Welcome {state.userSession.loginInfo.username}</h1>

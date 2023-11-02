@@ -16,6 +16,7 @@
     margin-bottom: auto;
     font-size: 3em;
     text-align: center;
+    color: black;
 }
 
 .Clientes > .Clientes__content {
@@ -75,8 +76,13 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    color: black;
 }
 
 .Clientes > .Clientes__content > .Clientes__list > .Clientes-list__item > span:first-of-type {
     flex: 0 0 4ch;
+}
+
+.Clientes > .Clientes__content > .Clientes__list > .Clientes-list__item {
+    border-bottom: 1px solid black; 
 }

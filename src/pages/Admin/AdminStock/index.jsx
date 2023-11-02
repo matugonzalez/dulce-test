@@ -97,8 +97,11 @@ const Inventory = () => {
             <div className="modal-content">
                 <h2>Eliminar de inventario</h2>
                 <p>¿Estás seguro de que deseas eliminar este elemento de inventario</p>
-                <button onClick={onClose}>Cancelar</button>
-                <button>Eliminar</button>
+                <div className="button-container">
+                    <button onClick={onClose}>Cancelar</button>
+                    <button>Eliminar</button>
+                </div>
+
             </div>
         </div>
         );
@@ -135,8 +138,11 @@ const Inventory = () => {
                     onChange={(e) => setEditedStock(e.target.value)}
                 />
                 </label>
-                <button onClick={onClose}>Cancelar</button>
-                <button>Guardar</button>
+                <div className="button-container">
+                    <button onClick={onClose}>Cancelar</button>
+                    <button>Guardar</button>
+                </div>
+
             </div>
         </div>
     )
@@ -172,8 +178,11 @@ const Inventory = () => {
                     onChange={(e) => setNewProductStock(e.target.value)}
                 />
                 </label>
-                <button onClick={onClose}>Cancelar</button>
-                <button>Guardar</button>
+                <div className="button-container">
+                    <button onClick={onClose}>Cancelar</button>
+                    <button>Guardar</button>
+                </div>
+
             </div>
         </div>
     )
