@@ -1,4 +1,109 @@
 .Home {
     display:grid;
     min-height: 100vh;
+   
+    background-image: radial-gradient(rgba(255, 0, 72, 0.171) 2px, #00000000 3px);
+    background-size: 20px 20px;
+    
+}
+.Home_Container{
+    padding-left: 5rem;
+    padding-right: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px 30px;
+    border-radius: 10px;
+}
+.Home_Title{
+    margin-top: 3rem;
+    font-size: 80px !important;
+    color: var(--brand-color-l-low) !important;
+    font-family: var(--brand-font-family) !important;
+    font-size: 3rem;
+    text-align: center;
+}
+.Home_AboutMe{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    border-radius: 2rem;
+    border-top-right-radius: 10rem;
+    border-bottom-right-radius: 10rem;
+    
+    width: 60%;
+    height: 300px;
+    background-color: var(--brand-color-l-high);
+}
+.Home_Image{
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    margin: 0;
+    background-image: url(./images/girl.png);
+    background-size: cover;
+}
+.Home_AboutMe--Texto{
+    display: flex;
+    align-items: center;
+    width: 70%;
+    font-size: 30px;
+    color: white;
+    padding: 1rem;
+}
+
+/*Aqui Comienza los Ranking*/
+
+.Home_Ranking{
+    color: var(--brand-color-l-low) !important;
+    margin-bottom: 1rem;
+    text-align: center;
+    background-color: var(--brand-color-l-high);
+    height: 600px;
+    margin-top: 4rem;
+    border-radius: 2rem;
+    width: 70%;
+    padding: 1rem;
+}
+.Home_places{
+    display: flex;
+    justify-content: center;
+    align-items: self-end;
+}
+.Home_Ranking h1{
+    margin-bottom: 1rem;
+    font-size: 30px;
+    color: white;
+    font-family: var(--brand-font-family) !important;
+}
+.Home_Crown{
+    font-size: 60px;
+    color: #ffbf00;
+}
+.Home_SecondPlace{
+    height: 350px;
+    width: 250px;
+    justify-content: center;
+    background-image: radial-gradient(circle at 74.18% -16.45%, #ffffff 0, #b5c9f2 50%, #4f8bd9 100%);
+    padding: 2rem;
+}
+.Ranking--second{
+    font-size: 30px;
+}
+.Home_FirstPlace{
+    padding: 2rem;
+    height: 400px;
+    width: 300px;
+    background-image: radial-gradient(circle at 43.84% -20.44%, #daffb7 0, #dfffa7 7.14%, #e4f996 14.29%, #e8ef85 21.43%, #ebe373 28.57%, #eed561 35.71%, #f0c64e 42.86%, #f2b53c 50%, #f4a32c 57.14%, #f69221 64.29%, #f8801d 71.43%, #fb6d20 78.57%, #fe5a27 85.71%, #ff4431 92.86%, #ff293d 100%);
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.3);
+}
+.Home_ThirdPlace{
+    padding: 2rem;
+    height: 300px;
+    width: 250px;
+    background-image: radial-gradient(circle at 0% 0%, #ecc447 0, #eeb646 10%, #eba646 20%, #e39547 30%, #d68246 40%, #c46f44 50%, #b05d41 60%, #9e4e3f 70%, #8e423d 80%, #81393c 90%, #76323c 100%);
+    
+}
+.Ranking-card{
+    height: 75%;
 }

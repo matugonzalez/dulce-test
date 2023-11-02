@@ -15,7 +15,6 @@ const HeaderBar = ({className}) => {
                     <NavsLinks to = "/home">HOME</NavsLinks>
                     <NavsLinks to = "/menu">MENU</NavsLinks>
                     {state.userSession.logged && <NavsLinks to = "/orders">ORDERS</NavsLinks>}
-                    <NavsLinks to = "/about-us">ABOUT US</NavsLinks>
                 </div>
                 
             <div>
