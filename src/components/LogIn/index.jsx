@@ -44,6 +44,7 @@ const LogIn = ({className}) => {
 
     return (
        <form className={`Login ${inputClassName}`} onSubmit={handleSubmit}>
+            <h1>LOGIN</h1>
             <label className='Login__label' htmlFor='username'>
                 <strong className='Login-label__text'>Username</strong>
                 <div className='Login-label__input'>

@@ -2,9 +2,11 @@ import React from 'react'
 import './Clientes.css'
 import { useState,useEffect } from 'react'
 import data from './test.json'
+import axios from 'axios'
 
 const Clientes = () => {
     const [clientes, setClientes] = useState([]);
+
     const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
@@ -12,6 +14,17 @@ const Clientes = () => {
             setClientes(data.clientes);
         }
     }, []);
+    /*
+    useEffect(() => {
+        axios.get('api/orders')
+            .then((response) => {
+                setClientes(response.data.clientes)
+            })
+            .catch((error) => {
+                console.log('Error', error);
+            })
+    }, [])
+    */
     //search input
     const handleOnChange = (event) => {
         const { value } = event.target;
@@ -28,6 +41,12 @@ const Clientes = () => {
         }
         return pedido.id === id;
     });
+
+    /* 
+    return !!clientes.client.fullname.toLowerCase().match(regExp)
+
+    return clientes.id === id; ¿???
+    */
 
     return (
             <div className='Clientes'>
@@ -62,5 +81,8 @@ const Clientes = () => {
             </div>
         );
 }
-
+/*
+<span>{cliente.client.fullname}</span>
+<span>{cliente.cantidad}</span> ¿???
+*/
 export default Clientes;

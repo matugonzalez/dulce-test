@@ -1,4 +1,53 @@
 .Home {
     display:grid;
     min-height: 100vh;
+    
 }
+.Home_Container{
+    padding-left: 5rem;
+    padding-right: 5rem;
+    background-color: var(--brand-color-l-highest);
+    margin: 30px 30px;
+    border-radius: 10px;
+}
+.Home_welcome{
+    color: white;   
+    font-size: 3rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.Home_Title{
+    margin-top: 3rem;
+    font-size: 80px !important;
+    color: white;
+    font-family: var(--brand-font-family) !important;
+    font-size: 3rem;
+    text-align: center;
+}
+.card_test{
+    display: flex;
+    justify-content: center;
+}
+.Home_Frecuent{
+    font-size: 60px;
+    color: white;
+    font-family:var(--brand-font-family) !important;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+.Home_Divider{
+    margin: 2rem 0 2rem;
+    color: var(--brand-color-l-low) !important;
+}
+.Home_Texto{
+    color: var(--brand-color-l-high);
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%;
+    text-align: center;
+}
+.Home_orderInfo{
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+}
+

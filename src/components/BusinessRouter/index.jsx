@@ -8,6 +8,7 @@ import AdminOrder from '../../pages/Admin/AdminOrder'
 import Inventory from '../../pages/Admin/AdminStock'
 import Clientes from '../../pages/Admin/AdminClientes'
 import Dashboard from '../../pages/Admin/Dashboard'
+import Stock from '../../pages/Admin/Stock'
 
 // CLIENT PAGES
 import Home from '../../pages/Client/Home'

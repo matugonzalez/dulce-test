@@ -6,20 +6,40 @@ import axios from 'axios'
 
 const Orders = () => {
   const [pedidos, setPedidos] = useState([]);
-  
+  const [pedidosState, setPedidosState] = useState([])
+  const [pedidosCliente, setPedidosCliente] = useState([])
+
   const [searchQuery, setSearchQuery] = useState('');
-  /*
+  
   useEffect(() => {
     if (data && data.pedidos) {
         setPedidos(data.pedidos);
     }
   }, []);
-  */
+  
+/*
   useEffect(() => {
     axios.get('/api/orders')
       .then((response) => setPedidos(response.data.pedidos))
       .catch((error) => console.error('Error', error));
+
+    axios.get('/api/orders/state')  
+      .then((response) => {
+        setPedidosState(response.data.pedidosState)
+      })
+        .catch((error) => {
+          console.log('Error', error);
+        })
+
+    axios.get('api/orders/client')
+        .then((response) => {
+          setPedidosCliente(response.data.pedidosCliente)
+        })
+          .catch((error) => {
+            console.log('Error', error);
+          })
   }, []);
+*/  
   //search input
   const handleOnChange = (event) => {
     const { value } = event.target;
@@ -35,6 +55,13 @@ const Orders = () => {
     }
         return pedido.id === id;
     });
+    /* 
+    return !!pedidosState.toLowerCase().match(regExp)
+
+    return pedidoState === pedidos.id; ¿???
+    */
+
+
     //More info Button
     const handleInfoButton = () => {
       //lógica del botón "Ver más"
@@ -67,8 +94,8 @@ const Orders = () => {
                     <span>
                         <button>➕</button>
                     </span>
-                    <span>{pedido.cliente.fullname}</span>
-                    <span>{pedido.state}</span>
+                    <span>{pedido.cliente}</span>
+                    <span>{pedido.estado}</span>
                 </div>
             ))}
         </div>
@@ -76,5 +103,10 @@ const Orders = () => {
 </div>
   )
 }
+
+/*
+                    <span>{pedido.client.fullname}</span>
+                    <span>{pedido.state}</span>
+*/
 
 export default Orders
