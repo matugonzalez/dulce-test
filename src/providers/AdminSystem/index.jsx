@@ -41,10 +41,26 @@ const AdminSystemContextProvider = ({children}) => {
                     }
                 }, 2000)
 
-                //get /api/admin/login { username, password 
             })
         },
-        logOut: () => {setUserSessionState((prev) => ({...prev, logged: false, loginInfo: undefined}))}
+        logOut: () => {setUserSessionState((prev) => ({...prev, logged: false, loginInfo: undefined}))},
+        Register: (registerInfo) => {
+            return new Promise((resolve, reject) => {
+                axios.post('/api/users', registerInfo)
+                    .then((response) => {
+                        if (response.data.created) {
+                            resolve(true)
+                            alert('User created...')
+                        }else {
+                            reject('Email already used')
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error)
+                        alert('Something went wrong...')
+                    })
+            })
+        }
 
     }
 
