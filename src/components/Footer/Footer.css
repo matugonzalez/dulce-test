@@ -1,0 +1,21 @@
+.footer{
+    color: white;
+    height: 300px;
+    background-color: var(--brand-color-l-high);
+}
+.footer_copyrigth{
+    text-align: center;
+    color: white;
+}
+.footer_brand{
+    font-size: 50px;
+    font-family: var(--brand-font-family);
+}
+.footer_body{
+    
+    display: flex;
+    align-items: center;
+    margin: 0 5rem 10rem;
+    display: flex;
+    justify-content: space-between;
+}
