@@ -11,11 +11,23 @@ const HeaderBar = ({className}) => {
     return (
         <header className={`HeaderBar ${inputClassName}`}>
             <Logo className='HeaderBar__Logo' />
-                <div className='navsLink'>
-                    <NavsLinks to = "/home">HOME</NavsLinks>
-                    <NavsLinks to = "/menu">MENU</NavsLinks>
-                    {state.userSession.logged && <NavsLinks to = "/orders">ORDERS</NavsLinks>}
-                </div>
+            {state.userSession.loginInfo === undefined | state.userSession.loginInfo === 'client' 
+                ?
+                    <div className='navsLink'>
+                        <NavsLinks to = "/home">HOME</NavsLinks>
+                        <NavsLinks to = "/menu">MENU</NavsLinks>
+                        {state.userSession.logged && <NavsLinks to = "/orders">ORDERS</NavsLinks>}
+                    </div>
+                :
+                state.userSession.loginInfo.role === 'admin' 
+                    &&
+                    <div className='navsLink'>
+                        <NavsLinks to = "/admin/menu">MENU</NavsLinks>
+                        <NavsLinks to = "/admin/orders">ORDERS</NavsLinks>
+                        <NavsLinks to = "/admin/users">USERS</NavsLinks>
+                        <NavsLinks to = "/admin/stock">STOCK</NavsLinks>
+                    </div> 
+            }
                 
             <div>
                 {state.userSession.logged 
@@ -28,7 +40,6 @@ const HeaderBar = ({className}) => {
                         >
                             LOG OUT
                         </Button>
-                        {state.userSession.loginInfo.role === 'admin' && <NavsLinks to='/admin/dashboard'>DASHBOARD</NavsLinks>}
                     </div>
                     : 
                     <div className='navsLink'>
