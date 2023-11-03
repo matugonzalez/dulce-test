@@ -3,12 +3,16 @@
         {
             "id": "1",
             "nombre": "Juan",
-            "cantidad": 2
+            "cantidad": 2,
+            "celular": 3814,
+            "mail": "joa@gmail"
         }, 
         {
             "id": "2",
             "nombre": "Pedro",
-            "cantidad": 4
+            "cantidad": 4,
+            "celular":3816,
+            "mail": "juan@gmail"
         }
     ]
 }

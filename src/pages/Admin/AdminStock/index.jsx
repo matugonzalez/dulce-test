@@ -2,30 +2,44 @@ import React from 'react'
 import './Stock.css'
 import { useState,useEffect } from 'react'
 import data from './test.json'
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalFooter, ModalBody, ModalCloseButton, useDisclosure, FormControl } from '@chakra-ui/react'
+import { Input, Button, FormLabel} from '@chakra-ui/react';
+import axios from 'axios'
 
 const Inventory = () => {
     const [products, setProducts] = useState([]);
     const [searchQuery, setSearchQuery] = useState('');
-    //modalDelete
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [productToDelete, setProductToDelete] = useState(null)
-    //modalEdit
-    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-    const [productToEdit, setProductToEdit] = useState(null);
-    const [editedTitle, setEditedTitle] = useState('');
-    const [editedDetalle, setEditedDetalle] = useState('');
-    const [editedStock, setEditedStock] = useState(0);
     //modalAdd
-    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
-    const [newProductTitle, setNewProductTitle] = useState('');
-    const [newProductDetalle, setNewProductDetalle] = useState('');
-    const [newProductStock, setNewProductStock] = useState(0);
+    const { isOpen: addModalIsOpen, onOpen: addModalOpen, onClose: addModalClose } = useDisclosure();
+    const [newProduct, setNewProduct] = useState({title: "", detail: "", stock: 0});
+    //modalEdit
+    const { isOpen: editModalIsOpen, onOpen: editModalOpen, onClose: editModalClose } = useDisclosure();
+    const [editProduct, setEditProduct] = useState({title: "", detail: "", stock: 0});
+    const [editProductId, setEditProductId] = useState();
+    //modalDelete
+    const { isOpen: deleteModalIsOpen, onOpen: deleteModalOpen, onClose: deleteModalClose } = useDisclosure();
+    const [deleteProductId, setDeleteProductId] = useState();
+
+    const addInitialRef = React.useRef(null);
+    const editInitialRef = React.useRef(null);
     
     useEffect(() => {
         if (data && data.products) {
         setProducts(data.products);
     }
     }, []);
+    
+    /*
+    useEffect(() => {
+        axios.get('http://localhost:4000/api/inventory')  
+        .then((response) => {
+            setProducts(response.data.products)
+        })
+        .catch((error) => {
+            console.log('Error', error);
+        })
+    }, [])
+    */
     //search input
     const handleOnChange = (event) => {
         const { value } = event.target;
@@ -38,158 +52,91 @@ const Inventory = () => {
         if (isNaN(id)) {
         const regExp = new RegExp(`^${searchQuery.toLowerCase()}.*`);
         return !!product.titulo.toLowerCase().match(regExp) || !!product.detalle.toLowerCase().match(regExp);
+        //return !!product.title.toLowerCase().match(regExp) || !!product.detail.toLowerCase().match(regExp);
     }
         return product.id === id;
     });
-    //delete modal
-    const openModal = (product) => {
-        setIsModalOpen(true);
-        setProductToDelete(product);
-    };
-    const closeModal = () => {
-        setIsModalOpen(false);
-      //setProductToDelete(null);
-    };
-    const handleDelete = () => {
-      //logica del botón Eliminar
-    
+
+
+
+    //add
+    /*const handleGuardarProduct = () => { 
+        addModalClose()
+    }*/
+    const handleGuardarProduct = () => {
+        if (newProduct.title && newProduct.detail && newProduct.stock) {
+            const productData = {
+                title: newProduct.title,
+                detail: newProduct.detail,
+                stock: newProduct.stock
+            }
+            axios.post('http://localhost:4000/api/inventory', productData)
+            .then (() => {
+                addModalClose()
+                setNewProduct({
+                    title: "",
+                    detail: "",
+                    stock: 0
+            });
+            })
+            .catch ((error) => {
+                console.log('Error', error);
+            })
+        }
+        else {
+            return true;
+        }
     }
 
-    //edit modal
-    const openEditModal = (product) => {
-        setIsEditModalOpen(true);
-        setProductToEdit(product);
-        setEditedTitle(product.titulo);
-        setEditedDetalle(product.detalle);
-        setEditedStock(product.stock);
-    };
-    const closeEditModal = () => {
-        setIsEditModalOpen(false);
-        setProductToEdit(null);
+    //edit
+    /*const handleGuardarEdicion = () => { 
+        editModalClose()
+    }*/
+    const handleEditarProduct = (id) => {
+        setEditProductId(id)
+        editModalOpen()
     }
-    const handleEdit = () => {
-      //logica del botón Editar
-    
+    const handleGuardarEdicion = () => { 
+        if (newProduct.title && newProduct.detail && newProduct.stock) {
+            const dataProduct = {
+                title: editProduct.title,
+                detail: editProduct.detail,
+                stock: editProduct.stock
+            }
+            axios.put(`http://localhost:4000/api/inventory/${editProductId}`, dataProduct)
+            .then (() => {
+                editModalClose()
+            })
+            .catch ((error) => {
+                console.log('Error', error);
+            })
+        }
+        else {
+            return true;
+        }
     }
-
-    //add modal
-    const openAddModal = () => {
-        setIsAddModalOpen(true);
-    };
-    const closeAddModal = () => {
-        setIsAddModalOpen(false);
-        setNewProductTitle('');
-        setNewProductDetalle('');
-        setNewProductStock(0);
-    };
-    const handleAdd = () => {
-        //logica del botón Añadir
-    
-    }
-
-    /*Modales*/
 
     //delete
-    const Modal = ({ isOpen, onClose }) => {
-        if (!isOpen) return null;
-        return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <h2>Eliminar de inventario</h2>
-                <p>¿Estás seguro de que deseas eliminar este elemento de inventario</p>
-                <div className="button-container">
-                    <button onClick={onClose}>Cancelar</button>
-                    <button>Eliminar</button>
-                </div>
-
-            </div>
-        </div>
-        );
-    };
-
-    //edit  
-    const ModalEdit = ({isOpen, onClose}) => {
-        if (!isOpen) return null;
-        return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <h2>Editar</h2>
-                <label>
-                    Título:
-                    <input
-                    type='text'
-                    value={editedTitle}
-                    onChange={(e) => setEditedTitle(e.target.value)}
-                />
-                </label>
-                <label>
-                    Detalles:
-                    <input
-                    type='text'
-                    value={editedDetalle}
-                    onChange={(e) => setEditedDetalle(e.target.value)}
-                />
-                </label>
-                <label>
-                    Stock:
-                    <input
-                    type='number'
-                    value={editedStock}
-                    onChange={(e) => setEditedStock(e.target.value)}
-                />
-                </label>
-                <div className="button-container">
-                    <button onClick={onClose}>Cancelar</button>
-                    <button>Guardar</button>
-                </div>
-
-            </div>
-        </div>
-    )
+    /*const handleEliminarProduct = () => { 
+        deleteModalClose()
+    }*/
+    const handleEliminarProductId = (id) => {
+        setDeleteProductId(id)
+        deleteModalOpen()
     }
-
-    const ModalAdd = ({ isOpen, onClose }) => {
-        if (!isOpen) return null;
-        return (
-        <div className="modal-overlay">
-            <div className="modal-content">
-                <h2>Añadir</h2>
-                <label>
-                    Título:
-                    <input
-                    type="text"
-                    value={newProductTitle}
-                    onChange={(e) => setNewProductTitle(e.target.value)}
-                />
-                </label>
-                <label>
-                    Detalles:
-                    <input
-                    type="text"
-                    value={newProductDetalle}
-                    onChange={(e) => setNewProductDetalle(e.target.value)}
-                />
-                </label>
-                <label>
-                    Stock:
-                    <input
-                    type="number"
-                    value={newProductStock}
-                    onChange={(e) => setNewProductStock(e.target.value)}
-                />
-                </label>
-                <div className="button-container">
-                    <button onClick={onClose}>Cancelar</button>
-                    <button>Guardar</button>
-                </div>
-
-            </div>
-        </div>
-    )
+    const handleEliminarProduct = () => {
+        axios.delete(`http://localhost:4000/api/inventory/${deleteProductId}`)
+        .then(() => {
+            deleteModalClose()
+        })
+        .catch((error) => {
+            console.log('error', error);
+        })
     }
 
     return (
-    <div className='Inventory'>
+    <>
+    <div className='Inventory' >
         <h1 className='Inventory__title'>Inventario</h1>
         <div className='Inventory__content'>
             <label className='Inventory__filter' htmlFor='inventory_filter_search'>
@@ -204,26 +151,26 @@ const Inventory = () => {
                 />
             </label>
         <div>
-            <button className='Inventory_Add' onClick={openAddModal}>Añadir</button>
+            <Button colorScheme='pink' onClick={addModalOpen}>Añadir</Button>
         </div>
         <div className='Inventory__list'>
             <div className='Inventory-list__item'>
-                <span>Edit</span>
-                <span>Borrar</span>
-                <span>ID</span>
-                <span>Título</span>
-                <span>Detalle</span>
-                <span>Stock</span>
+                <span style={{ fontWeight: 'bold' }}>Edit</span>
+                <span style={{ fontWeight: 'bold' }}>Borrar</span>
+                <span style={{ fontWeight: 'bold' }}>ID</span>
+                <span style={{ fontWeight: 'bold' }}>Título</span>
+                <span style={{ fontWeight: 'bold' }}>Detalle</span>
+                <span style={{ fontWeight: 'bold' }}>Stock</span>
             </div>
             {filteredList.map((product) => (
             <div
             key={product.id}
             className='Inventory-list__item'>
                 <span>
-                    <button onClick={() => openEditModal(product)}>✏️</button>
+                    <Button backgroundColor='pink' onClick={() => handleEditarProduct(product.id)}>✏️</Button>
                 </span>
                 <span>
-                    <button onClick={() => openModal(product)}>🗑️</button>
+                    <Button backgroundColor='pink' onClick={() => handleEliminarProductId(product.id)}>🗑️</Button>
                 </span>
                 <span>{product.id}</span>
                 <span>{product.titulo}</span>
@@ -233,11 +180,123 @@ const Inventory = () => {
             ))}
         </div>
     </div>
-    <Modal isOpen={isModalOpen} onClose={closeModal} />
-    <ModalEdit isOpen={isEditModalOpen} onClose={closeEditModal}/>
-    <ModalAdd isOpen={isAddModalOpen} onClose={closeAddModal}/>
     </div>
+
+    <Modal
+        initialFocusRef={addInitialRef}
+        isOpen={addModalIsOpen}
+        onClose={addModalClose}
+        size='xl'
+    >
+        <ModalOverlay />
+        <ModalContent backgroundColor='pink' borderRadius='30px'>
+            <ModalHeader>Agregar un nuevo elemento</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody pb={6}>
+                <FormControl>
+                    < FormLabel>Nombre</FormLabel>
+                    <Input backgroundColor='white' ref={addInitialRef} placeholder='Título' value={newProduct.title} onChange={(e) => setNewProduct({title: e.target.value })}/>
+                    < FormLabel>Autor</FormLabel>
+                    <Input backgroundColor='white' ref={addInitialRef} placeholder='Detalles' value={newProduct.detail} onChange={(e) => setNewProduct({detail: e.target.value })}/>
+                    < FormLabel>Stock total</FormLabel>
+                    <Input backgroundColor='white' ref={addInitialRef} placeholder='Stock' value={newProduct.stock} onChange={(e) => setNewProduct({stock: e.target.value })}/>
+                </FormControl>
+            </ModalBody>
+            <ModalFooter>
+                <Button colorScheme='pink' mr={3} onClick={handleGuardarProduct} >Guardar</Button>
+                <Button onClick={addModalClose}>Cancelar</Button>
+            </ModalFooter>
+        </ModalContent>
+    </Modal>
+    <Modal
+        initialFocusRef={editInitialRef}
+        isOpen={editModalIsOpen}
+        onClose={editModalClose}
+        size='xl'
+    >
+        <ModalOverlay />
+        <ModalContent backgroundColor='pink' borderRadius='30px'>
+            <ModalHeader>Editar producto</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody pb={6}>
+                <FormControl>
+                    < FormLabel>Título</FormLabel>
+                    <Input backgroundColor='white' ref={editInitialRef} placeholder='Título' value={editProduct.title}  onChange={(e) => setEditProduct({ title: e.target.value })}/>
+                    < FormLabel>Detalle</FormLabel>
+                    <Input backgroundColor='white' ref={editInitialRef} placeholder='Nombre autor' value={editProduct.detail}  onChange={(e) => setEditProduct({detail: e.target.value })}/>
+                    < FormLabel>Stock</FormLabel>
+                    <Input backgroundColor='white' ref={editInitialRef} placeholder='Stock' value={editProduct.stock}  onChange={(e) => setEditProduct({stock: e.target.value })}/>
+                </FormControl>
+            </ModalBody>
+            <ModalFooter>
+                <Button colorScheme='pink' mr={3} onClick={handleGuardarEdicion}>Guardar</Button>
+                <Button onClick={editModalClose}>Cancelar</Button>
+            </ModalFooter>
+        </ModalContent>
+    </Modal>
+    <Modal 
+        isOpen={deleteModalIsOpen} 
+        onClose={editModalClose}
+        size='xl'
+    >
+        <ModalOverlay />
+        <ModalContent backgroundColor='pink' borderRadius='30px'>
+            <ModalHeader>Eliminar producto</ModalHeader>
+            <ModalBody fontWeight='bold'>
+                ¿Seguro que quieres eliminar este producto?
+            </ModalBody>
+            <ModalFooter>
+                <Button colorScheme='red' onClick={handleEliminarProduct}>Eliminar</Button>
+                <Button mr={3} onClick={deleteModalClose}>Cancelar</Button>
+            </ModalFooter>
+        </ModalContent>
+    </Modal>
+    </>
     )
 }
 
 export default Inventory;
+
+
+
+
+
+
+
+/*
+add
+const handleGuardarProduct = () => {
+    if (newProduct.title && newProduct.detail && newProduct.stock) {
+        const addNewProduct = {
+            id: data.products.length + 1,
+            ...newProduct,
+    };
+    //console.log(addNewBook);
+    data.products.push(addNewProduct);
+    addModalClose();
+    setNewProduct({
+        title: "",
+        detail: "",
+        stock: 0
+    });
+    }
+};
+
+    edit
+    const handleEditarProduct = (index) => {
+        setEditProduct(data.products[index]);
+        setEditProductId(index);
+        editModalOpen();
+    };
+    const handleGuardarEdicion = () => {
+        if (editProductId !== -1) {
+            data.products[editProductId] = editProduct;
+            editModalClose();
+        }
+    };
+    */
+
+
+
+
+

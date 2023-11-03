@@ -1,3 +1,4 @@
+
 .Inventory {
     --Inventory-spacing: 7.5px;
     flex: 0 1 fit-content;
@@ -17,6 +18,7 @@
     font-size: 3em;
     text-align: center;
     color: black;
+    font-weight: bolder;
 }
 
 .Inventory > .Inventory__content {
@@ -88,59 +90,4 @@
     border-bottom: 1px solid black; 
 }
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-}
-
-.modal-content {
-    background-color: palevioletred; 
-    padding: 20px;
-    border-radius: 25px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.modal-content label {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 10px;
-    color: white; 
-}
-
-.modal-content input {
-    background-color: white; 
-    color: black; 
-    font-size: 1.1em; 
-    border-radius: 10px;
-}
-
-.modal-content button {
-    margin: 5px; 
-    padding: 5px 15px; 
-    font-size: 0.9em;
-    border-radius: 15px;
-    cursor: pointer;
-}
-/*¿working??????*/
-.Inventory_Add,/*¿?*/
-.Inventory-list__item button {
-    padding: 1px 1px;/*Tamaño boton*/
-    font-size: 0.9em;/* amaño letra boton*/
-}
-.Inventory_Add {
-    background-color: palevioletred;/*Fondo botón Añadir*/
-    color: black;/*Letras botón Añadir*/
-    border-radius: 15px;
-}
 

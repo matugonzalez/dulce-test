@@ -59,6 +59,7 @@ const Orders = () => {
     return !!pedidosState.toLowerCase().match(regExp)
 
     return pedidoState === pedidos.id; ¿???
+    return pedidos.id === id ¿???
     */
 
 
@@ -83,10 +84,10 @@ const Orders = () => {
         </label>
         <div className='Pedidos__list'>
             <div className='Pedidos-list__item'>
-                <span>ID</span>
-                <span>Ver más</span>
-                <span>Cliente</span>
-                <span>Estado</span>
+                <span style={{ fontWeight: 'bold' }}>ID</span>
+                <span style={{ fontWeight: 'bold' }}>Ver más</span>
+                <span style={{ fontWeight: 'bold' }}>Cliente</span>
+                <span style={{ fontWeight: 'bold' }}>Estado</span>
             </div>
             {filteredList.map((pedido) => (
                 <div key={pedido.id} className='Pedidos-list__item'>
