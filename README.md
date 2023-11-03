@@ -5,6 +5,7 @@
     - yarn add react-router-dom
     - yarn add axios
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 ## EXCALIDRAW
@@ -12,3 +13,11 @@
 ## CHAKRA
     - npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 >>>>>>> c0ad146a808e1ca0f545b2f91fa52837e3d88d7f
+=======
+## CHAKRA
+    - npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
+## Icons
+    - yarn add @fortawesome/free-solid-svg-icons
+    - yarn add @fortawesome/free-regular-svg-icons
+    - yarn add @fortawesome/free-brands-svg-icons
+>>>>>>> b1c036fb99c660e8a2644982285bbe9c830f12fc

@@ -1,0 +1,17 @@
+.AdminOrdersPage {
+    display:flex;
+    flex-direction: column;
+    min-height: 100vh;
+    
+}
+
+.AdminOrdersPage_orders {
+    align-self: center;
+    justify-self: center;
+    height: 350px;
+    overflow: auto;
+}
+
+.AdminOrdersPage_table {
+    background-color: var(--brand-color-l-higher);
+}

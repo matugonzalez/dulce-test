@@ -1,6 +1,7 @@
 import './Footer.css'
 import { Divider } from '@chakra-ui/react'
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 function Footer(){
     return(
@@ -12,6 +13,14 @@ function Footer(){
                     </div>
                     <div className="footer_contactUs">
                         <h1>ContancUs</h1>
+                        <div className="contactUs_phone">
+                            <FontAwesomeIcon className="contactUs_icon" icon={faPhone} />
+                            <span>+54 381-542-6534</span>
+                        </div>
+                        <div className="contactUs_gmail">
+                            <FontAwesomeIcon className="contactUs_icon" icon={faEnvelope}/>
+                            <span>dolcemikaa@gmial.com</span>
+                        </div>
                     </div>
                 </div>
                 <Divider/>

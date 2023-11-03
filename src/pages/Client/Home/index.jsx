@@ -5,6 +5,9 @@ import itemsCards from './cards'
 import { Text, Heading, Box, Card, CardHeader, CardBody, CardFooter, Divider, Center } from '@chakra-ui/react'
 import Dividers from '../../../components/Divider'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCrown, fa2, fa3 } from '@fortawesome/free-solid-svg-icons';
+
 import Footer from '../../../components/Footer'
 
 
@@ -14,36 +17,53 @@ const Home = () => {
             <HeaderBar />
             <div className="Home_Container">
                 <div className="Home_Title">
-                    <h1>Welcome to DolceMika</h1>
+                    <h1>Welcome to DolceMika</h1>                 
                 </div>
-                <div className="Home_welcome">
-                    <Text fontSize='3xl' className='Home_Texto'>
-                    Hoy, estamos emocionados de compartir un mundo de sabor y dulzura con todos ustedes. En "DolceMika," creamos delicias que no solo satisfacen tu apetito, sino que también hacen que tu día sea más dulce.
-                    Nuestros pasteleros están comprometidos con la excelencia, utilizando ingredientes de la más alta calidad para crear pasteles y postres que deleitan los sentidos. Desde lo clásico hasta lo innovador, tenemos algo para todos los gustos.
-                    Queremos ser parte de tus momentos especiales y celebrar la vida contigo. Gracias por unirte a nosotros en esta deliciosa aventura. ¡Bienvenidos a "DolceMika"!
-                    </Text>
+                <div className="Home_AboutMe">
+                    <div className="Home_Image">
+                    </div>
+                   <div className="Home_AboutMe--Texto">
+                    <h1>
+                        !Hola! Soy Mica<br></br>
+                        Estudié cocina y me especializo en
+                        hacer cosas dulces
+                        Podes ver mi trabajo y contactarme
+                        en : @dolcemikaa
+                    </h1>
+                   </div>
                 </div>
-                <Dividers/>
-                <div className="Home_Frecuent">
-                    <h1>Pedidos Frecuentes</h1>
-                </div>
-                <div className="card_test">
-                    <CarouselCard items ={itemsCards}/>
-                    <CarouselCard items ={itemsCards}/>
-                    <CarouselCard items ={itemsCards}/>
-                </div>
-                <div className="Home_orderInfo">
-                <Card>
-                    <CardBody>
-                    <Center height='30px'>
-                        <Divider orientation='vertical' />
-                    </Center>
-                    </CardBody>
-                </Card>
+                <div className="Home_Ranking">
+                        <h1>Ranking</h1>
+                        <div className="Home_places">
+                            <div className="Home_SecondPlace">
+                                <h1><FontAwesomeIcon icon={fa2} bounce /></h1>
+                                <Card className='Ranking-card'>
+                                    <CardBody>
+                                        <Text></Text>
+                                    </CardBody>
+                                </Card>
+                            </div>
+                            <div className="Home_FirstPlace">
+                                <h1><FontAwesomeIcon className='Home_Crown' icon={faCrown} beat /></h1>
+                                <Card className='Ranking-card'>
+                                    <CardBody>
+                                        <Text></Text>
+                                    </CardBody>
+                                </Card>
+                            </div>
+                            <div className="Home_ThirdPlace">
+                                <h1><FontAwesomeIcon icon={fa3} bounce /></h1>
+                                <Card className='Ranking-card'>
+                                    <CardBody>
+                                        <Text></Text>
+                                    </CardBody>
+                                </Card>
+                            </div>
+                        </div>
                 </div>
             </div>
             <div className="Home_footer">
-                <Footer/>
+            <Footer/>
             </div>
         </div>
     )
