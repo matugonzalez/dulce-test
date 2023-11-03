@@ -24,3 +24,7 @@ a.isActive{
     color: var(--brand-color-l-base) !important
 
 }
+
+.AdminOrders_ordersItem-link {
+    color: var(--brand-color-l-base) !important;
+}
