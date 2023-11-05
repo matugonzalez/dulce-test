@@ -4,10 +4,12 @@ import ProtectedRoute from './ProtectedRoute'
 
 // ADMIN PAGES
 import AdminOrders from '../../pages/Admin/AdminOrders'
-import AdminOrder from '../../pages/Admin/AdminOrder'
+
 import Dashboard from '../../pages/Admin/Dashboard'
 import Stock from '../../pages/Admin/Stock'
 import AdminMenuPage from '../../pages/Admin/AdminMenuPage'
+import Inventory from '../../pages/Admin/AdminStock'
+import Clientes from '../../pages/Admin/AdminClientes'
 
 // CLIENT PAGES
 import Home from '../../pages/Client/Home'
@@ -32,8 +34,8 @@ const BusinessRouter = () => {
                         <Route index path='dashboard' element={<Dashboard  />}/>
 
                         <Route path='orders'>
-                            <Route index element={<AdminOrders />}/>
-                            <Route path=':orderId' element={<AdminOrder />} />
+                            //<Route index element={<AdminOrders />}/>
+                            <Route path=':orderId'  />
                         </Route>
 
                         <Route path='stock'>
@@ -43,7 +45,7 @@ const BusinessRouter = () => {
 
                         <Route path='menu' element={<AdminMenuPage />}/>
                         <Route path='users'>
-                            <Route index element={<div>where list of users should go</div>}/>
+                            <Route index element={<Clientes />}/>
                             <Route path=':userId' element={<div>where each user should go</div>}/>
                         </Route>
 

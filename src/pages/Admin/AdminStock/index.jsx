@@ -22,14 +22,13 @@ const Inventory = () => {
 
     const addInitialRef = React.useRef(null);
     const editInitialRef = React.useRef(null);
-    
+    /*
     useEffect(() => {
         if (data && data.products) {
         setProducts(data.products);
     }
     }, []);
-    
-    /*
+    */
     useEffect(() => {
         axios.get('http://localhost:4000/api/inventory')  
         .then((response) => {
@@ -39,7 +38,6 @@ const Inventory = () => {
             console.log('Error', error);
         })
     }, [])
-    */
     //search input
     const handleOnChange = (event) => {
         const { value } = event.target;
@@ -51,13 +49,11 @@ const Inventory = () => {
         const id = Number(searchQuery);
         if (isNaN(id)) {
         const regExp = new RegExp(`^${searchQuery.toLowerCase()}.*`);
-        return !!product.titulo.toLowerCase().match(regExp) || !!product.detalle.toLowerCase().match(regExp);
-        //return !!product.title.toLowerCase().match(regExp) || !!product.detail.toLowerCase().match(regExp);
+        //return !!product.titulo.toLowerCase().match(regExp) || !!product.detalle.toLowerCase().match(regExp);
+        return !!product.title.toLowerCase().match(regExp) || !!product.detail.toLowerCase().match(regExp);
     }
         return product.id === id;
     });
-
-
 
     //add
     /*const handleGuardarProduct = () => { 
@@ -94,10 +90,18 @@ const Inventory = () => {
     }*/
     const handleEditarProduct = (id) => {
         setEditProductId(id)
+        const productToEdit = products.find((product) => product.id === id)
+        if (productToEdit) {
+            setEditProduct({
+                title: productToEdit.title,
+                detail: productToEdit.detail,
+                stock: productToEdit.stock,
+            })            
+        }
         editModalOpen()
     }
     const handleGuardarEdicion = () => { 
-        if (newProduct.title && newProduct.detail && newProduct.stock) {
+        if (editProduct.title && editProduct.detail && editProduct.stock) {
             const dataProduct = {
                 title: editProduct.title,
                 detail: editProduct.detail,
@@ -173,8 +177,8 @@ const Inventory = () => {
                     <Button backgroundColor='pink' onClick={() => handleEliminarProductId(product.id)}>🗑️</Button>
                 </span>
                 <span>{product.id}</span>
-                <span>{product.titulo}</span>
-                <span>{product.detalle}</span>
+                <span>{product.title}</span>
+                <span>{product.detail}</span>
                 <span>{product.stock}</span>
             </div>
             ))}
@@ -236,7 +240,7 @@ const Inventory = () => {
     </Modal>
     <Modal 
         isOpen={deleteModalIsOpen} 
-        onClose={editModalClose}
+        onClose={deleteModalClose}
         size='xl'
     >
         <ModalOverlay />
@@ -257,44 +261,6 @@ const Inventory = () => {
 
 export default Inventory;
 
-
-
-
-
-
-
-/*
-add
-const handleGuardarProduct = () => {
-    if (newProduct.title && newProduct.detail && newProduct.stock) {
-        const addNewProduct = {
-            id: data.products.length + 1,
-            ...newProduct,
-    };
-    //console.log(addNewBook);
-    data.products.push(addNewProduct);
-    addModalClose();
-    setNewProduct({
-        title: "",
-        detail: "",
-        stock: 0
-    });
-    }
-};
-
-    edit
-    const handleEditarProduct = (index) => {
-        setEditProduct(data.products[index]);
-        setEditProductId(index);
-        editModalOpen();
-    };
-    const handleGuardarEdicion = () => {
-        if (editProductId !== -1) {
-            data.products[editProductId] = editProduct;
-            editModalClose();
-        }
-    };
-    */
 
 
 

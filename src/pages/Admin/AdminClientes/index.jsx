@@ -10,7 +10,6 @@ const Clientes = () => {
     const [clientes, setClientes] = useState([]);    
     const [info, setInfo] = useState({id: 0, fullname: "", cellphone: 0, email: ""})
 
-
     const { isOpen, onOpen, onClose } = useDisclosure()
     const InitialRef = React.useRef(null);
 
@@ -43,13 +42,13 @@ const Clientes = () => {
         const id = Number(searchQuery);
         if (isNaN(id)) {
             const regExp = new RegExp(`^${searchQuery.toLowerCase()}.*`);
-            return !!cliente.nombre.toLowerCase().match(regExp)
-            //return !!clientes.client.fullname.toLowerCase().match(regExp)
+            //return !!cliente.nombre.toLowerCase().match(regExp)
+            return !!cliente.client.fullname.toLowerCase().match(regExp)
         }
-        return pedido.id === id;
-        //return clientes.id === id; ¿???
+        //return pedido.id === id;
+        return cliente.client.id === id; 
     });
-
+    /*
     const handleClientInfoId = (id) => {
         axios.get(`/api/orders/${id}`)
         .then((response) => {
@@ -65,6 +64,43 @@ const Clientes = () => {
         .catch((error) => {
             console.log('error', error);
         })
+    }*/
+    /*
+    const handleClientInfoId = (id) => {
+        axios.get(`/api/orders/${id}`)
+        .then((response) => {
+            const clientesData = response.data.client
+            const cliente = clientesData.find((c) => c.client.id === id )
+            if (cliente) {
+                const {id, fullname, cellphone, email} = cliente
+                setInfo({
+                    id,
+                    fullname,
+                    cellphone,
+                    email,
+                })
+            }
+            onOpen()
+        })
+        .catch((error) => {
+            console.log('error', error);
+        })
+    }
+    */
+    //la forma correcta en teoría ¿
+    const handleClientInfoId = (id) => {
+            const clientesData = clientes.client
+            const cliente = clientesData.find((c) => c.id === id )
+            if (cliente) {
+                const {id, fullname, cellphone, email} = cliente
+                setInfo({
+                    id,
+                    fullname,
+                    cellphone,
+                    email,
+            })
+            }
+            onOpen()
     }
 
     return (
@@ -91,11 +127,11 @@ const Clientes = () => {
                             <span style={{ fontWeight: 'bold'}}>Más Info</span>
                         </div>
                         {filteredList.map((cliente) => (
-                            <div key={cliente.id} className='Clientes-list__item'>
+                            <div key={cliente.client.id} className='Clientes-list__item'>
                                 <span>{cliente.client.id}</span>
                                 <span>{cliente.client.fullname}</span>
                                 <span>{cliente.client.cantidad}</span>
-                                <span><Button backgroundColor='pink' onClick={() => handleClientInfoId(cliente.id)}>➕</Button></span>
+                                <span><Button backgroundColor='pink' onClick={() => handleClientInfoId(cliente.client.id)}>➕</Button></span>
                             </div>
                         ))}
                     </div>
@@ -115,15 +151,15 @@ const Clientes = () => {
             <ModalBody pb={6}>
                 <FormControl>
                     <FormLabel fontSize='3xl' fontWeight='bold'>ID de cliente:</FormLabel>
-                    <FormLabel fontSize='2xl'>info.id</FormLabel>
+                    <FormLabel fontSize='2xl'>{info.id}</FormLabel>
                     <FormLabel fontSize='3xl' fontWeight='bold'>Nombre de cliente:</FormLabel>
-                    <FormLabel fontSize='2xl'>info.fullname</FormLabel>
+                    <FormLabel fontSize='2xl'>{info.fullname}</FormLabel>
                     <FormLabel fontSize='3xl' fontWeight='bold'>Cantidad de compras realizadas</FormLabel>
-                    <FormLabel fontSize='2xl'>info.cantidad</FormLabel>
+                    <FormLabel fontSize='2xl'>{info.cantidad}</FormLabel>
                     <FormLabel fontSize='3xl' fontWeight='bold'>Celular de cliente</FormLabel>
-                    <FormLabel fontSize='2xl'>info.cellphone</FormLabel>
+                    <FormLabel fontSize='2xl'>{info.cellphone}</FormLabel>
                     <FormLabel fontSize='3xl' fontWeight='bold'>Mail de cliente:</FormLabel>
-                    <FormLabel fontSize='2xl'>info.email</FormLabel>
+                    <FormLabel fontSize='2xl'>{info.email}</FormLabel>
                 </FormControl>
             </ModalBody>
             <ModalFooter>
