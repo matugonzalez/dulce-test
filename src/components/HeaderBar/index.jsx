@@ -11,7 +11,7 @@ const HeaderBar = ({className}) => {
     return (
         <header className={`HeaderBar ${inputClassName}`}>
             <Logo className='HeaderBar__Logo' />
-            {state.userSession.loginInfo === undefined | state.userSession.loginInfo === 'client' 
+            {state.userSession.loginInfo === undefined || state.userSession.loginInfo.role === 'client' 
                 ?
                     <div className='navsLink'>
                         <NavsLinks to = "/home">HOME</NavsLinks>
