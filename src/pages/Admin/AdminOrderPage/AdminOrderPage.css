@@ -1,0 +1,30 @@
+.AdminOrderMain {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.AdminOrderButtons {
+    display: flex;
+    justify-content: center;
+}
+.AdminOrderButtons > button {
+    border: 2px solid;
+    padding: 10px;
+    background-color: var(--brand-color-l-highest);
+    margin: 20px;
+}
+.AdminOrderButtons > button:hover {
+    background-color: var(--brand-color-l-high)
+}
+
+.--pause {
+    text-transform: uppercase;
+}
+.--unpause{
+    text-transform: uppercase;
+}
+.--cancel {
+    background-color: var(--brand-color-l-lowest);
+}
+

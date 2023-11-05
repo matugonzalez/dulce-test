@@ -1,0 +1,30 @@
+.AdminOrderStates {
+    display: flex;
+    flex-direction: column;
+    color: var(--brand-color-l-lower);
+    padding: 1em;
+    width: 500px;
+    min-height: 500px;
+    border-radius: var(--border-radius);
+    background-color: var(--brand-color-l-higher);
+    position: relative;
+}
+.AdminOrderStates > h1 {
+    text-align: left;
+    border-bottom: 1px solid var(--brand-color-l-lower);
+    font-weight: bold;
+    font-size: 2.5em;
+}
+.AdminOrderStates > span {
+    margin-top: 10px;
+    background-color: var(--brand-color-l-highest);
+    border-radius: var(--border-radius);
+    padding-left: 1em;
+    outline: 1px solid;
+}
+.AdminOrderStates > .Spinner {
+    position: absolute;
+    top: 50%;
+    align-self: center;
+    transform: translate(0,-50%);
+}
