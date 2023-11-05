@@ -15,7 +15,7 @@ import {
     Spinner,
 } from '@chakra-ui/react'
 import HeaderBar from '../../../components/HeaderBar'
-import data from './tests'
+import data from './ordersMock'
 import NavsLinks from '../../../components/NavLinks'
 
 
@@ -45,9 +45,6 @@ const AdminOrders = () => {
 
     }, [])
 
-    const handleOnClick = (orderId) => {
-        <Navigate to={`/admin/orders/${orderId}`}/>
-    }
     return (
         <div className='AdminOrdersPage'> 
             <HeaderBar />
