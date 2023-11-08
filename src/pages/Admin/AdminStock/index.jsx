@@ -52,7 +52,7 @@ const Inventory = () => {
         //return !!product.titulo.toLowerCase().match(regExp) || !!product.detalle.toLowerCase().match(regExp);
         return !!product.title.toLowerCase().match(regExp) || !!product.detail.toLowerCase().match(regExp);
     }
-        return product.id === id;
+        return product.ingredient_id === id;
     });
 
     //add
@@ -90,7 +90,7 @@ const Inventory = () => {
     }*/
     const handleEditarProduct = (id) => {
         setEditProductId(id)
-        const productToEdit = products.find((product) => product.id === id)
+        const productToEdit = products.find((product) => product.ingredient_id === id)
         if (productToEdit) {
             setEditProduct({
                 title: productToEdit.title,
@@ -168,15 +168,15 @@ const Inventory = () => {
             </div>
             {filteredList.map((product) => (
             <div
-            key={product.id}
+            key={product.ingredient_id}
             className='Inventory-list__item'>
                 <span>
-                    <Button backgroundColor='pink' onClick={() => handleEditarProduct(product.id)}>✏️</Button>
+                    <Button backgroundColor='pink' onClick={() => handleEditarProduct(product.ingredient_id)}>✏️</Button>
                 </span>
                 <span>
-                    <Button backgroundColor='pink' onClick={() => handleEliminarProductId(product.id)}>🗑️</Button>
+                    <Button backgroundColor='pink' onClick={() => handleEliminarProductId(product.ingredient_id)}>🗑️</Button>
                 </span>
-                <span>{product.id}</span>
+                <span>{product.ingredient_id}</span>
                 <span>{product.title}</span>
                 <span>{product.detail}</span>
                 <span>{product.stock}</span>

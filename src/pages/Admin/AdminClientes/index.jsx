@@ -8,7 +8,7 @@ import { Button, FormLabel} from '@chakra-ui/react';
 
 const Clientes = () => {
     const [clientes, setClientes] = useState([]);    
-    const [info, setInfo] = useState({id: 0, fullname: "", cellphone: 0, email: ""})
+    const [info, setInfo] = useState({id: 0, fullname: "", amount_orders: 0, cellphone: 0, email: "", birthdate: 0})
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const InitialRef = React.useRef(null);
@@ -22,7 +22,7 @@ const Clientes = () => {
     }, []);
     */
     useEffect(() => {
-        axios.get('http://localhost:4000/api/orders')
+        axios.get('http://localhost:4000/api/orders/clients')
             .then((response) => {
                 setClientes(response.data.clientes)
             })
@@ -43,10 +43,10 @@ const Clientes = () => {
         if (isNaN(id)) {
             const regExp = new RegExp(`^${searchQuery.toLowerCase()}.*`);
             //return !!cliente.nombre.toLowerCase().match(regExp)
-            return !!cliente.client.fullname.toLowerCase().match(regExp)
+            return !!cliente.fullname.toLowerCase().match(regExp)
         }
         //return pedido.id === id;
-        return cliente.client.id === id; 
+        return cliente.client_id === id; 
     });
     /*
     const handleClientInfoId = (id) => {
@@ -89,18 +89,20 @@ const Clientes = () => {
     */
     //la forma correcta en teoría ¿
     const handleClientInfoId = (id) => {
-            const clientesData = clientes.client
-            const cliente = clientesData.find((c) => c.id === id )
+            //const clientesData = clientes
+            const cliente = clientes.find((c) => c.client_id === id )
             if (cliente) {
-                const {id, fullname, cellphone, email} = cliente
                 setInfo({
-                    id,
-                    fullname,
-                    cellphone,
-                    email,
+                    id: cliente.client_id,
+                    fullname: cliente.fullname,
+                    amount_orders: cliente.amount_orders,
+                    cellphone: cliente.cellphone,
+                    email: cliente.email,
+                    birthdate: cliente.birthdate 
             })
-            }
             onOpen()
+            }
+            
     }
 
     return (
@@ -127,11 +129,11 @@ const Clientes = () => {
                             <span style={{ fontWeight: 'bold'}}>Más Info</span>
                         </div>
                         {filteredList.map((cliente) => (
-                            <div key={cliente.client.id} className='Clientes-list__item'>
-                                <span>{cliente.client.id}</span>
-                                <span>{cliente.client.fullname}</span>
-                                <span>{cliente.client.cantidad}</span>
-                                <span><Button backgroundColor='pink' onClick={() => handleClientInfoId(cliente.client.id)}>➕</Button></span>
+                            <div key={cliente.client_id} className='Clientes-list__item'>
+                                <span>{cliente.client_id}</span>
+                                <span>{cliente.fullname}</span>
+                                <span>{cliente.amount_orders}</span>
+                                <span><Button backgroundColor='pink' onClick={() => handleClientInfoId(cliente.client_id)}>➕</Button></span>
                             </div>
                         ))}
                     </div>
@@ -150,16 +152,18 @@ const Clientes = () => {
             <ModalCloseButton />
             <ModalBody pb={6}>
                 <FormControl>
-                    <FormLabel fontSize='3xl' fontWeight='bold'>ID de cliente:</FormLabel>
+                    <FormLabel fontSize='3xl' fontWeight='bold'>ID del cliente:</FormLabel>
                     <FormLabel fontSize='2xl'>{info.id}</FormLabel>
-                    <FormLabel fontSize='3xl' fontWeight='bold'>Nombre de cliente:</FormLabel>
+                    <FormLabel fontSize='3xl' fontWeight='bold'>Nombre del cliente:</FormLabel>
                     <FormLabel fontSize='2xl'>{info.fullname}</FormLabel>
                     <FormLabel fontSize='3xl' fontWeight='bold'>Cantidad de compras realizadas</FormLabel>
-                    <FormLabel fontSize='2xl'>{info.cantidad}</FormLabel>
-                    <FormLabel fontSize='3xl' fontWeight='bold'>Celular de cliente</FormLabel>
+                    <FormLabel fontSize='2xl'>{info.amount_orders}</FormLabel>
+                    <FormLabel fontSize='3xl' fontWeight='bold'>Celular del cliente</FormLabel>
                     <FormLabel fontSize='2xl'>{info.cellphone}</FormLabel>
-                    <FormLabel fontSize='3xl' fontWeight='bold'>Mail de cliente:</FormLabel>
+                    <FormLabel fontSize='3xl' fontWeight='bold'>Mail del cliente:</FormLabel>
                     <FormLabel fontSize='2xl'>{info.email}</FormLabel>
+                    <FormLabel fontSize='3xl' fontWeight='bold'>Cumpleaños del cliente:</FormLabel>
+                    <FormLabel fontSize='2xl'>{info.birthdate}</FormLabel>
                 </FormControl>
             </ModalBody>
             <ModalFooter>
