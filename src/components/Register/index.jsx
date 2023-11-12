@@ -3,7 +3,6 @@ import { useState, useRef } from 'react'
 import { useAdminSystem } from '../../providers/AdminSystem'
 import ClosedEye from '../Icons/ClosedEye'
 import OpenedEye from '../Icons/OpenedEye'
-import axios from 'axios'
 
 const Register = ({className}) => {
     const [_, actions] = useAdminSystem()
@@ -30,9 +29,8 @@ const Register = ({className}) => {
             console.log('Invalid email format')
             return
         }
-        
 
-        actions.userSession.Register({
+        actions.session.register({
             email: event.target.email.value,
             fullname: event.target.fullname.value, 
             cellphone: event.target.cellphone.value, 

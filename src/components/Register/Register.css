@@ -21,7 +21,7 @@
 
 .Register strong,
 .Register span {
-    font-family: --system-font-family;
+    font-family: var(--system-font-family);
 }
 
 .Register.--register-failed > .Register__state {
@@ -56,7 +56,7 @@
     flex-direction: row;
 
     border: 2px solid currentColor;
-    border-radius: calc(var(--brand-border-radius) - var(--Login-form-spacing));
+    border-radius: calc(var(--brand-border-radius) - var(--Register-form-spacing));
 }
 
 .Register > .Register__label > .Register-label__input > input {
@@ -69,7 +69,7 @@
 
     border: 0;
     border-left: 10px solid transparent;
-    border-radius: calc(var(--brand-border-radius) - var(--Login-form-spacing));
+    border-radius: calc(var(--brand-border-radius) - var(--Register-form-spacing));
 
     outline: 0;
 }
@@ -97,7 +97,7 @@
     height: 70%;
     fill: var(--secondary-color-l-low);
 }
-Login
+
 .Register > .Register__submit-bt {
     flex: 0 1 auto;
     min-width: 8ch;

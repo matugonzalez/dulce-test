@@ -1,5 +1,4 @@
 import './AdminOrders.css'
-import { Navigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import {
@@ -14,7 +13,6 @@ import {
     TableContainer,
     Spinner,
 } from '@chakra-ui/react'
-import HeaderBar from '../../../components/HeaderBar'
 import data from './ordersMock'
 import NavsLinks from '../../../components/NavLinks'
 
@@ -47,7 +45,6 @@ const AdminOrders = () => {
 
     return (
         <div className='AdminOrdersPage'> 
-            <HeaderBar />
             <div className='AdminOrdersPage_orders'>
                 {orders 
                     ?

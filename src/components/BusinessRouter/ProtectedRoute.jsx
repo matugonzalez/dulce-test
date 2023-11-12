@@ -4,7 +4,7 @@ import { useAdminSystem } from '../../providers/AdminSystem'
 const ProtectedRoute = () => {
     const [state] = useAdminSystem()
 
-    if (state.userSession.logged) return  <Outlet/>
+    if (state.session.logged) return  <Outlet/>
     return (
         <Navigate to='/login' replace />
     )

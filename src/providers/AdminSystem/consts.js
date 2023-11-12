@@ -1,19 +1,22 @@
 const BUSINESS_INFO = {
-    name: 'Dolce',
-    tel: '0381-4000000',
-    email: 'dolce@gmail.com',
+    name: 'DolceMika',
+    instagram: '@dolcemikaa',
 }
 
 const ADMIN_LOGIN_INFO = {
-    username: 'admin',
+    email: 'admin@email.com',
     password: 'admin',
     role: 'admin',
 }
 
 const CLIENT_LOGIN_INFO = {
-    username: 'client',
+    email: 'client@email.com',
     password: 'client',
     role: 'client',
 }
 
-export { BUSINESS_INFO, ADMIN_LOGIN_INFO, CLIENT_LOGIN_INFO }
+const API_INFO = {
+    base_path: 'http://localhost:4000/api'
+}
+
+export { BUSINESS_INFO, ADMIN_LOGIN_INFO, CLIENT_LOGIN_INFO, API_INFO }

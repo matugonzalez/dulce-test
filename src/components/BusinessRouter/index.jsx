@@ -1,87 +1,79 @@
-import { Routes, Route, Navigate, useParams, Outlet } from 'react-router-dom'
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 import { useAdminSystem } from '../../providers/AdminSystem'
-import ProtectedRoute from './ProtectedRoute'
+
+// UNAUTH PAGES
+import MenuPage from '../../pages/MenuPage'
+import NotFoundPage from '../../pages/NotFound'
 
 // ADMIN PAGES
 import AdminOrders from '../../pages/Admin/AdminOrdersPage'
 import AdminOrder from '../../pages/Admin/AdminOrderPage'
-import Dashboard from '../../pages/Admin/Dashboard'
 import Stock from '../../pages/Admin/Stock'
 import AdminMenuPage from '../../pages/Admin/AdminMenuPage'
 
 // CLIENT PAGES
 import Home from '../../pages/Client/Home'
-import AboutUs from '../../pages/Client/AboutUs'
 import ClientOrders from '../../pages/Client/ClientOrders'
 import ClientOrder from '../../pages/Client/ClientOrder'
 import ClientMenu from '../../pages/Client/Menu'
 
 // LOGIN REGISTER PAGES
-import Register from '../../pages/RegisterPage'
+import RegisterPage from '../../pages/RegisterPage'
 import LoginPage from '../../pages/LoginPage'
+
+// LAYOUTS
+import UnauthLayout from '../Layouts/Unauth'
+import ClientLayout from '../Layouts/Client'
+// import AdminLayout from '../Layouts/Admin'
 
 const BusinessRouter = () => {
     const [state] = useAdminSystem()
-    const  {orderId}  = useParams()
-    return (
-        <Routes>
-            {/* ADMIN RELATED ROUTES */}
-                {/* LOGIN PROTECTED ROUTES */}
-                <Route path='/admin' element={<Outlet />}>
-                    <Route element={<ProtectedRoute />}>
-                        <Route index path='dashboard' element={<Dashboard  />}/>
 
-                        <Route path='orders'>
-                            <Route index element={<AdminOrders />}/>
-                            <Route path=':orderId' element={<AdminOrder />} />
-                        </Route>
-
-                        <Route path='stock'>
-                            <Route index element={<Stock/>}/>
-                            <Route path='new' element={<Stock/>} />
-                        </Route>
-
-                        <Route path='menu' element={<AdminMenuPage />}/>
-                        <Route path='users'>
-                            <Route index element={<div>where list of users should go</div>}/>
-                            <Route path=':userId' element={<div>where each user should go</div>}/>
-                        </Route>
+    if (!state.session.logged) {
+        return (
+            <Routes>
+                {!state.session.logged && <>
+                    <Route path='/' element={<UnauthLayout><Outlet /></UnauthLayout>}>
+                        <Route index element={<Navigate to='/home' />} />
+                        <Route path='home' element={<Home />} />
+                        <Route path='menu' element={<MenuPage />} />
+                        <Route path='login' element={<LoginPage />} />
+                        <Route path='register' element={<RegisterPage />} />
+                        <Route path='*' element={<NotFoundPage />} />
                     </Route>
+                </>}
+            </Routes>
+        )
+    }
 
-                    <Route path='*' element={<h1>404</h1>} />
+    if (state.session.user.role === 'client') {
+        return (
+            <Routes>
+                <Route path='/' element={<ClientLayout><Outlet /></ClientLayout>}>
+                    <Route index element={<Navigate to='/home' />} />
+                    <Route path='home' element={<Home />} />
+                    <Route path='menu' element={<ClientMenu />} />
+                    <Route path='orders' element={<ClientOrders />} />
+                    <Route path='*' element={<NotFoundPage />} />
                 </Route>
-        
-            <Route path='/'>
-                <Route index element={<Navigate to='/home'/>} />
-                <Route path='home' element={<Home />}/>
-                <Route path='about-us' element={<AboutUs />}/>
+            </Routes>
+        )
+    }
 
-                <Route path='menu' element={<ClientMenu />}/>
-
-                <Route element={<ProtectedRoute />}>
-                    <Route path='orders'>
-                            <Route index element={<ClientOrders />}/>
-                            <Route path=':id' element={<ClientOrder />} />
-                    </Route>
+    if (state.session.user.role === 'admin') {
+        return (
+            <Routes>
+                <Route path='/' element={<AdminLayout><Outlet /></AdminLayout>}>
+                    <Route index element={<Navigate to='/orders' />} />
+                    <Route path='orders' element={<AdminOrders />} />
+                    <Route path='clients' element={<></>} />
+                    <Route path='menu' element={<AdminMenuPage />} />
+                    <Route path='inventory' element={<></>} />
+                    <Route path='*' element={<NotFoundPage />} />
                 </Route>
-
-                <Route path='*' element={<h1>404</h1>} />
-            </Route>
-    
-            <Route path='login' element={
-                state.userSession.logged
-                ? state.userSession.loginInfo.role === 'admin' 
-                    ?
-                    <Navigate to='/admin/menu'/>
-                    :
-                    <Navigate to='/home'/>
-                : <LoginPage />
-                }
-            />
-            <Route path='register' element= {state.userSession.logged ?<Register to='/home'/> : <Register />} />
-        </Routes>
-        
-    )
+            </Routes>
+        )
+    }
 }
 
 export default BusinessRouter

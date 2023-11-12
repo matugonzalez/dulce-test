@@ -1,0 +1,14 @@
+.NotFoundPage {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+}
+
+.NotFoundPage > div {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.NotFoundPage > div > h1 {
+    font-size: 5rem;
+}

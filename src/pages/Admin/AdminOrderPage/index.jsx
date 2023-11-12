@@ -2,7 +2,6 @@ import './AdminOrderPage.css'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
-import HeaderBar from '../../../components/HeaderBar'
 import AdminOrderInfo from './components/AdminOrderInfo'
 import AdminOrderStates from './components/AdminOrderStates'
 import { getLastState, getNextState, getStateId } from './helpers'
@@ -109,7 +108,6 @@ const AdminOrderPage = () => {
 
     return (
         <div className='AdminOrderPage'>
-            <HeaderBar />
             <div className="AdminOrderMain">
                 <AdminOrderInfo order={order} />
                 <AdminOrderStates orderStates={orderStates} />

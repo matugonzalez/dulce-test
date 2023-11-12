@@ -1,4 +1,4 @@
-import MenuTree from '../../../components/MenuTree';
+import { WalkMenuTree } from '../../../components/WalkMenuTree';
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -20,7 +20,7 @@ const ClientMenu = (props = { className: '' }) => {
 
     return (
         <div className={`ClientMenu ${props.className}`}>
-            <MenuTree menu={menu} />
+            <WalkMenuTree menu={menu} />
         </div>
     );
 };

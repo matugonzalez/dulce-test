@@ -1,32 +1,23 @@
 .Home {
-    display:grid;
+    display: grid;
     min-height: 100vh;
-   
-    background-image: radial-gradient(rgba(255, 0, 72, 0.171) 2px, #00000000 3px);
-    background-size: 20px 20px;
-    
 }
 .Home_Container{
-    padding-left: 5rem;
-    padding-right: 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 30px 30px;
-    border-radius: 10px;
+    gap: 30px;
 }
 .Home_Title{
     margin-top: 3rem;
     font-size: 80px !important;
     color: var(--brand-color-l-low) !important;
     font-family: var(--brand-font-family) !important;
-    font-size: 3rem;
     text-align: center;
 }
 .Home_AboutMe{
     display: flex;
     flex-direction: row-reverse;
-    justify-content: space-between;
     border-radius: 2rem;
     border-top-right-radius: 10rem;
     border-bottom-right-radius: 10rem;
@@ -106,4 +97,11 @@
 }
 .Ranking-card{
     height: 75%;
+}
+
+.Home_AboutMe--Texto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
