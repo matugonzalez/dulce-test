@@ -40,19 +40,20 @@ const MockLoggedAsClient = {
 
 const AdminSystemContextProvider = ({ children }) => {
     const [userSessionState, setUserSessionState] = useState(() => DefaultUserSessionState)
+    console.log(userSessionState)
 
     const userSessionActions = {
         logIn: (loginInfo) => {
             return new Promise((resolve, reject) => {
                 axios.post(`${API_INFO.base_path}/users/auth`, { email: loginInfo.email, password: loginInfo.password })
                 .then((response) => {
-                    if (!response.data.authorized) {
+                    if (!response.data.authenticated) {
                         setUserSessionState(() => DefaultUserSessionState)
                         resolve({ authorized: false, message: response.data.message })
                         return
                     }
 
-                    setUserSessionState({ logged: true, token: response.data.token, session: response.data.user })
+                    setUserSessionState({ logged: true, token: response.data.token, user: response.data.user })
                     resolve({ authorized: true })
                 })
                 .catch((error) => {

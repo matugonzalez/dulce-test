@@ -1,6 +1,7 @@
 import './LogIn.css'
-import { useAdminSystem } from '../../providers/AdminSystem'
+import { useNavigate } from 'react-router-dom'
 import { useState, useRef } from 'react'
+import { useAdminSystem } from '../../providers/AdminSystem'
 import ClosedEye from '../Icons/ClosedEye'
 import OpenedEye from '../Icons/OpenedEye'
 
@@ -9,6 +10,7 @@ const LogIn = ({className}) => {
     const [passwordInputType, setPasswordInputType] = useState('password')
     const formTipSpanRef = useRef(null)
     const submitButtonRef = useRef(null)
+    const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault()
@@ -23,11 +25,15 @@ const LogIn = ({className}) => {
             formTipSpanRef.current.textContext = ''
         }
 
-        actions.userSession.logIn({username: event.target.username.value, password: event.target.password.value})
-            .then(() => {
+        actions.session.logIn({ email: event.target.email.value, password: event.target.password.value })
+            .then((res) => {
+                console.log(res)
                 form.classList.remove('--login-failed')
+                if (res.authorized) {
+                    navigate('/home')
+                }
             })
-            .catch((reason)=> {
+            .catch((reason) => {
                 form.classList.add('--login-failed')
                 if (formTipSpanRef.current){
                     formTipSpanRef.current.textContent = reason

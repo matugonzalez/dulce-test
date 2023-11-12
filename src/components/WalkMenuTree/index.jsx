@@ -1,4 +1,5 @@
 import { Checkbox, Text, Box } from '@chakra-ui/react'
+
 const ReadOnlyWalkMenuTree = (passedProps) => {
     const defaultProps = { list: [], renderOptionAs: () => {}, renderCategoryAs: () => {}, offset: 10 }
     const props = !passedProps ? defaultProps : { ...defaultProps, ...passedProps }
@@ -20,7 +21,7 @@ const ReadOnlyWalkMenuTree = (passedProps) => {
                     key={v.id}
                     >
                         {v.children.length ? props.renderCategoryAs(v) : props.renderOptionAs(v)}
-                        {<ReadOnlyWalkMenuTree list={v.children} renderCategoryAs={props.renderCategoryAs} renderOptionAs={props.renderOptionAs} />}
+                        <ReadOnlyWalkMenuTree list={v.children} renderCategoryAs={props.renderCategoryAs} renderOptionAs={props.renderOptionAs} />
                     </Box>
                 )
             })}
@@ -29,12 +30,12 @@ const ReadOnlyWalkMenuTree = (passedProps) => {
 }
 
 const WalkMenuTree = (passedProps) => {
-    const defaultProps = { list: [], offset: 10, parents: [], actions: {} }
+    const defaultProps = { list: [], parents: [], actions: {}, renderOptionAs: () => {}, renderCategoryAs: () => {}, offset: 10 }
     const props = !passedProps ? defaultProps : { ...defaultProps, ...passedProps }
     
     if (!props.list.length) return <></>
 
-    return (
+    if (!props.renderOptionAs || !props.renderCategoryAs) return (
         <>
             {props.list.map((v) => {
                 // if (v.children.length) return (); // it's a section
@@ -44,7 +45,7 @@ const WalkMenuTree = (passedProps) => {
                 return (
                     <Box 
                     fontSize={'2xl'}
-                    paddingLeft={4}
+                    paddingLeft={props.offset}
                     className='MenuOption'
                     key={v.id}
                     >
@@ -64,7 +65,38 @@ const WalkMenuTree = (passedProps) => {
                             }
                             }>{v.title}</Checkbox>
                         : <Text color={'pink.600'} fontWeight={'bold'}>{v.title}</Text>}
-                        {<WalkMenuTree list={v.children} offset={props.offset} parents={[...props.parents, v.id]} actions={props.actions} />}
+                        <WalkMenuTree 
+                        list={v.children}
+                        offset={props.offset}
+                        parents={[...props.parents, v.id]}
+                        actions={props.actions}
+                        renderOptionAs={props.renderOptionAs}
+                        renderCategoryAs={props.renderCategoryAs}
+                        />
+                    </Box>
+                )
+            })}
+        </>
+    )
+
+    return (
+        <>
+            {props.list.map((v) => {
+                return (
+                    <Box
+                    fontSize={'4xl'}
+                    paddingLeft={props.offset}
+                    className='MenuOption'
+                    key={v.id}
+                    >
+                        {v.children.length ? props.renderCategoryAs({ ...v, parents: [...props.parents] }) : props.renderOptionAs({ ...v, parents: [...props.parents] })}
+                        <WalkMenuTree 
+                        list={v.children}
+                        offset={props.offset}
+                        parents={[...props.parents, v.id]}
+                        renderOptionAs={props.renderOptionAs}
+                        renderCategoryAs={props.renderCategoryAs}
+                        />
                     </Box>
                 )
             })}

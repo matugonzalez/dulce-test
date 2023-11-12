@@ -50,11 +50,11 @@ function FromSelectedMenuTreeToMenuItemList(menu = []) {
     return menuItemList
 }
 
-function SwitchSelectedFlagMenuItem(pool = [], ids = []) {
+function SwitchSelectedFlagMenuItemBak(pool = [], ids = []) {
     if (!ids.length) return pool
     if (!pool.length) return []
 
-    return pool.map((v) => {
+     pool.map((v) => {
         if (v.id !== ids[0]) {
             return {
                 ...v,
@@ -66,7 +66,7 @@ function SwitchSelectedFlagMenuItem(pool = [], ids = []) {
             return {
                 ...v,
                 isSelected: true,
-                children: SwitchSelectedFlagMenuItem(v.children, ids.slice(1)),
+                children: SwitchSelectedFlagMenuItemBak(v.children, ids.slice(1)),
             }
         }
 
@@ -75,6 +75,44 @@ function SwitchSelectedFlagMenuItem(pool = [], ids = []) {
             isSelected: ids.length === 1
         }
     })
+}
+
+function SwitchSelectedFlagMenuItem(pool = [], ids = []) {
+    function walk(pool, ids) {
+        if (!pool) return
+
+        const out = []
+
+        for (let i = 0; i < pool.length; i++) {
+            const item = pool[i]
+
+            if (item.id === ids[0]) {
+                if (item.children.length) {
+                    out.push({
+                        ...item,
+                        isSelected: ids.length >= 2 ? (item.children.filter((v) => v.isSelected).length > 1 ? true : !FromIDListToMenuItem(item.children, ids.slice(1))?.isSelected) : true,
+                        children: walk(item.children, ids.slice(1))
+                    })
+                    continue   
+                }
+
+                out.push({
+                    ...item,
+                    isSelected: !item.isSelected
+                })
+            }
+            else {
+                out.push({
+                    ...item,
+                    isSelected: ids.length === 1 ? false : item.isSelected
+                })
+            }
+        }
+
+        return out
+    }
+
+    return walk(pool, ids)
 }
 
 function DeselectAllMenuTree(pool = []) {
