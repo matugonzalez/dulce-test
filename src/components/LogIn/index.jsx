@@ -44,14 +44,13 @@ const LogIn = ({className}) => {
 
     return (
        <form className={`Login ${inputClassName}`} onSubmit={handleSubmit}>
-            <h1>LOGIN</h1>
-            <label className='Login__label' htmlFor='username'>
-                <strong className='Login-label__text'>Username</strong>
+            <label className='Login__label' htmlFor='email'>
+                <strong className='Login-label__text'>Email</strong>
                 <div className='Login-label__input'>
                     <input 
                     type='text'
-                    id='username'
-                    name='username'
+                    id='email'
+                    name='email'
                     required
                     autoFocus
                     />
@@ -77,7 +76,7 @@ const LogIn = ({className}) => {
                 </div>
             </label>
             <span className='Login__state' ref={formTipSpanRef}></span>
-            <button className='Login__submit-bt' type='submit' ref={submitButtonRef}>ENTER</button>
+            <button className='Login__submit-bt' type='submit' ref={submitButtonRef}>Iniciar sesión</button>
         </form>
     )
     }

@@ -131,7 +131,7 @@ const Register = ({className}) => {
                 </div>
             </label>
             <span className='Register__state' ref={formTipSpanRef}></span>
-            <button className='Register__submit-bt' type='submit' ref={submitButtonRef}>ENTER</button>
+            <button className='Register__submit-bt' type='submit' ref={submitButtonRef}>Crear cuenta</button>
             
         </form>
     )

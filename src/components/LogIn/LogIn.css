@@ -15,6 +15,7 @@
 
     color: var(--primary-color-l-highest);
     background-color: var(--secondary-color-l-base);
+    background-color: transparent;
 
     border-radius: var(--border-radius)
 }
@@ -42,6 +43,7 @@
 
 .Login > .Login__label > .Login-label__text {
     letter-spacing: 1px;
+    text-transform: capitalize;
 }
 
 .Login > .Login__label > .Login-label__input {
@@ -70,8 +72,8 @@
 }
 
 .Login > .Login__label > .Login-label__input > input::selection {
-    color: var(--primary-color-l-high);
-    
+    background-color: var(--primary-color-l-high);
+    color: var(--secondary-color-l-low);
 }
 
 .Login > .Login__label > .Login-label__input > button {
@@ -96,18 +98,17 @@
 .Login > .Login__submit-bt {
     flex: 0 1 auto;
     min-width: 8ch;
-    max-width: 8ch;
     margin-top: auto;
-    width: fit-content;
     align-self: flex-end;
+
+    font-size: 1em;
+    padding: 0 0.5em;
 
     border-radius: 5px;
     background-color: var(--brand-color-l-low);
     color: white;
 }
-h1{
-    text-align: center;
-}
+
 @keyframes shake-in-x {
     0% { transform: translateX(0) }
     25% { transform: translateX(5px) }
