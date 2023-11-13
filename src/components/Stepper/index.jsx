@@ -15,7 +15,7 @@ function Steppers(passedProps) {
     const props = !passedProps ? defaultProps : { ...defaultProps, ...passedProps }
 
     return (
-        <Stepper index={props.current}>
+        <Stepper index={props.current} display='flex' flexDirection='row' gap={4}>
             {props.steps.map((step) => (
                 <Step key={step.state_id}>
                     <StepIndicator>
@@ -27,7 +27,7 @@ function Steppers(passedProps) {
                     </StepIndicator>
 
                     <Box flexShrink='0'>
-                        <StepTitle>{step.state}</StepTitle>
+                        <StepTitle>{step.state.toUpperCase()}</StepTitle>
                     </Box>
 
                     <StepSeparator />
