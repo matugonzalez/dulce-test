@@ -53,7 +53,10 @@ const BusinessRouter = () => {
                     <Route index element={<Navigate to='/home' />} />
                     <Route path='home' element={<Home />} />
                     <Route path='menu' element={<ClientMenu />} />
-                    <Route path='orders' element={<ClientOrders />} />
+                    <Route path='orders'>
+                        <Route index element={<ClientOrders />} />
+                        <Route path=':id' element={<ClientOrder />} />
+                    </Route>
                     <Route path='*' element={<NotFoundPage />} />
                 </Route>
             </Routes>

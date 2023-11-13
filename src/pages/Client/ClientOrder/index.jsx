@@ -1,12 +1,9 @@
-import React from 'react'
-import './ClientOrder.css'
+import './ClientOrderPage.css'
 
-const ClientOrder = () => {
-  return (
-    <>
-    <div>ClientOrder</div>
-    </>
-  )
+const ClientOrderPage = () => {
+    return (
+        <div className='ClientOrderPage'>ClientOrder</div>
+    )
 }
 
-export default ClientOrder
+export default ClientOrderPage
