@@ -43,19 +43,17 @@ const Inventory = () => {
     //search input
     const handleOnChange = (event) => {
         const { value } = event.target;
-        setSearchQuery(() => value.replace(/[^a-zA-Z0-9-\s]/g, ''));
+        setSearchQuery(() => value.replace(/[^0-9-\s]/g, ''));
     };
 
 
     //filtrado de productos
     const filteredList = products.filter((product) => {
         if (!searchQuery.length) return true;
+
         const id = Number(searchQuery);
-        if (isNaN(id)) {
-        const regExp = new RegExp(`^${searchQuery.toLowerCase()}.*`);
-        //return !!product.titulo.toLowerCase().match(regExp) || !!product.detalle.toLowerCase().match(regExp);
-        return !!product.title.toLowerCase().match(regExp) || !!product.detail.toLowerCase().match(regExp);
-    }
+        if (isNaN(id)) return true
+
         return product.ingredient_id === id;
     });
 

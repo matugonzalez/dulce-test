@@ -50,7 +50,6 @@ const AdminHeaderBar = (passedProps) => {
         <header className={`HeaderBar ${props.className}`}>
             <Logo className='HeaderBar__Logo' />
             <nav>
-                <NavsLinks to='/clients'>CLIENTES</NavsLinks>
                 <NavsLinks to='/menu'>MENU</NavsLinks>
                 <NavsLinks to='/orders'>PEDIDOS</NavsLinks>
                 <NavsLinks to='/inventory'>INVENTARIO</NavsLinks>

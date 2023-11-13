@@ -72,7 +72,6 @@ const BusinessRouter = () => {
                         <Route index element={<AdminOrders />} />
                         <Route path=':id' element={<AdminOrder />} />
                     </Route>
-                    <Route path='clients' element={<></>} />
                     <Route path='menu' element={<AdminMenuPage />} />
                     <Route path='inventory' element={<AdminInventoryPage />} />
                     <Route path='*' element={<NotFoundPage />} />
