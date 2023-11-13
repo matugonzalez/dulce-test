@@ -8,7 +8,7 @@ import NotFoundPage from '../../pages/NotFound'
 // ADMIN PAGES
 import AdminOrders from '../../pages/Admin/AdminOrdersPage'
 import AdminOrder from '../../pages/Admin/AdminOrderPage'
-import Stock from '../../pages/Admin/Stock'
+import AdminInventoryPage from '../../pages/Admin/AdminInventoryPage'
 import AdminMenuPage from '../../pages/Admin/AdminMenuPage'
 
 // CLIENT PAGES
@@ -74,7 +74,7 @@ const BusinessRouter = () => {
                     </Route>
                     <Route path='clients' element={<></>} />
                     <Route path='menu' element={<AdminMenuPage />} />
-                    <Route path='inventory' element={<></>} />
+                    <Route path='inventory' element={<AdminInventoryPage />} />
                     <Route path='*' element={<NotFoundPage />} />
                 </Route>
             </Routes>

@@ -1,0 +1,93 @@
+.Inventory {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    --Inventory-spacing: 7.5px;
+    flex: 0 1 fit-content;
+    width: 90%;
+    max-height: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: clamp(1.7em, 12vw, .12em);
+}
+
+.Inventory > h1 {
+    flex: 0 0 fit-content;
+    width: fit-content;
+    margin-top: 0;
+    margin-bottom: auto;
+    font-size: 3em;
+    text-align: center;
+    color: black;
+    font-weight: bolder;
+}
+
+.Inventory > .Inventory__content {
+    flex: 1 1 auto;
+    width: 100%;
+    padding: var(--Inventory-spacing);
+    margin-top: 0;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--Inventory-spacing);
+    border-top: 0;
+    border-radius: var(--brand-border-radius);
+}
+
+.Inventory > .Inventory__content > .Inventory__filter {
+    flex: 0 0 fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--Inventory-spacing);
+}
+
+.Inventory > .Inventory__content > .Inventory__filter > .Inventory-filter__input {
+    flex: 0 1 25%;
+    font-size: .9em;
+    padding: .1em;
+    border: 0;
+    margin: 30px;
+}
+
+.Inventory > .Inventory__content > .Inventory__list {
+    flex: 1 1 auto;
+    width: 110%;
+    min-height: 40px;
+    max-height: 500px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.Inventory > .Inventory__content > .Inventory__list > .Inventory-list__item {
+    flex: 0 0 fit-content;
+    padding: var(--Inventory-spacing) 0;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid currentColor;
+    border-radius: 0;
+}
+
+.Inventory > .Inventory__content > .Inventory__list > .Inventory-list__item > span {
+    display: block;
+    flex: 1 0 10%;
+    height: fit-content;
+    font-size: .9em;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: black;
+}
+
+.Inventory > .Inventory__content > .Inventory__list > .Inventory-list__item > span:first-of-type {
+    flex: 0 0 4ch;
+}
+
+.Inventory > .Inventory__content > .Inventory__list > .Inventory-list__item {
+    border-bottom: 1px solid black; 
+}
