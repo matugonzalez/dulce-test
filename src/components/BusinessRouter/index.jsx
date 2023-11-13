@@ -68,7 +68,10 @@ const BusinessRouter = () => {
             <Routes>
                 <Route path='/' element={<AdminLayout><Outlet /></AdminLayout>}>
                     <Route index element={<Navigate to='/orders' />} />
-                    <Route path='orders' element={<AdminOrders />} />
+                    <Route path='orders'>
+                        <Route index element={<AdminOrders />} />
+                        <Route path=':id' element={<AdminOrder />} />
+                    </Route>
                     <Route path='clients' element={<></>} />
                     <Route path='menu' element={<AdminMenuPage />} />
                     <Route path='inventory' element={<></>} />

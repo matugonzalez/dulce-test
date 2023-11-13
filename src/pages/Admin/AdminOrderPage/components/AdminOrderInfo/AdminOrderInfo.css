@@ -1,27 +1,5 @@
-.AdminOrderInfo {
-    width: 500px;
-    min-height: 400px;
-    border-radius: var(--border-radius);
-    background-color: var(--brand-color-l-higher);
-    margin: 15px;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    color: var(--brand-color-l-lower);
-    position: relative;
-   
-}
-
-.AdminOrderInfo > h1 {
-    text-align: left;
-    border-bottom: 1px solid var(--brand-color-l-lower);
-    font-weight: bold;
-    font-size: 2.5em;
-}
-
-.AdminOrderInfo > .Spinner {
-    position: absolute;
-    top: 50%;
-    align-self: center;
-    transform: translate(-50%, -50%);
+.AdminOrderPage {
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
 }
