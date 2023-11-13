@@ -30,7 +30,7 @@ const LogIn = ({className}) => {
                 console.log(res)
                 form.classList.remove('--login-failed')
                 if (res.authorized) {
-                    navigate('/home')
+                    navigate('/')
                 }
             })
             .catch((reason) => {

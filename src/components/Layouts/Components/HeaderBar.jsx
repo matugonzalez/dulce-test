@@ -44,6 +44,7 @@ const ClientHeaderBar = (passedProps) => {
 const AdminHeaderBar = (passedProps) => {
     const defaultProps = { className: '' }
     const props = !passedProps ? defaultProps : { ...defaultProps, ...passedProps }
+    const [_, actions] = useAdminSystem()
 
     return (
         <header className={`HeaderBar ${props.className}`}>

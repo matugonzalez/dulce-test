@@ -207,4 +207,21 @@ function FilterUnselectedFromMenuTree(menu = []) {
     return walk(menu)
 }
 
-export { FromMenuTreeToMenuItemList, FromSelectedMenuTreeToMenuItemList, SwitchSelectedFlagMenuItem, DeselectAllMenuTree, FromIDListToMenuItem, FromIDListToMenuItemList, FromFetchedMenuTreeToClientMenuTree, FilterUnselectedFromMenuTree }
+function FromFetchedMenuTreeToAdminMenuTree(menu = []) {
+    if (!menu.length) return []
+
+    function walk(list = []) {
+        return list.map((v) => {
+            return {
+                ...v,
+                isEditing: false,
+                children: walk(v.children) ?? []
+            }
+        })
+    }
+
+
+    return walk(menu)
+}
+
+export { FromMenuTreeToMenuItemList, FromSelectedMenuTreeToMenuItemList, SwitchSelectedFlagMenuItem, DeselectAllMenuTree, FromIDListToMenuItem, FromIDListToMenuItemList, FromFetchedMenuTreeToClientMenuTree, FilterUnselectedFromMenuTree, FromFetchedMenuTreeToAdminMenuTree }

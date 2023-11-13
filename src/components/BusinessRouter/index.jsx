@@ -24,7 +24,7 @@ import LoginPage from '../../pages/LoginPage'
 // LAYOUTS
 import UnauthLayout from '../Layouts/Unauth'
 import ClientLayout from '../Layouts/Client'
-// import AdminLayout from '../Layouts/Admin'
+import AdminLayout from '../Layouts/Admin'
 
 const BusinessRouter = () => {
     const [state] = useAdminSystem()
