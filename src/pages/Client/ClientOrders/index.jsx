@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { useAdminSystem } from '../../../providers/AdminSystem'
+import { TranslateState } from './helpers'
 
 import Steppers from '../../../components/Stepper'
 import OrderAccordion from '../../../components/OrderAccordion'
@@ -32,13 +33,7 @@ const ClientOrdersPage = () => {
                 const responses = await Promise.all(requests)
 
                 const filteredUnusual = responses[1].data.states.filter((v) => !['revising', 'canceled', 'paused'].find((x) => x === v.state))
-                const translated = filteredUnusual.map((v) => {
-                    if (v.state === 'just arrived') return { ...v, state: 'recién llegado' }
-                    if (v.state === 'accepted') return { ...v, state: 'aceptado' }
-                    if (v.state === 'started') return { ...v, state: 'comenzado' }
-                    if (v.state === 'to be delivered') return { ...v, state: 'para entregar' }
-                    if (v.state === 'finished') return { ...v, state: 'finalizado' }
-                })
+                const translated = filteredUnusual.map((v) => ({ ...v, state: TranslateState(v.state) }))
 
                 setOrders(responses[0].data.orders)
                 setStates(translated)
